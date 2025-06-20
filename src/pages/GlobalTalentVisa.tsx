@@ -1,7 +1,4 @@
-import React from 'react';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
 
 const GlobalTalentVisa = () => (
   <>
@@ -102,7 +99,7 @@ const GlobalTalentVisa = () => (
         <div className="row align-items-center">
           <div className="col-lg-4">
             <div className="text-center">
-              <img src="/assets/Yakubu.png" alt="Dr. Yakubu Balogun" style={{ width: 300, height: 300, objectFit: 'cover', borderRadius: 20, boxShadow: 'var(--shadow-xl)' }} />
+              <img src={`${import.meta.env.BASE_URL}assets/Yakubu.png`} alt="Dr. Yakubu Balogun" style={{ width: 300, height: 300, objectFit: 'cover', borderRadius: 20, boxShadow: 'var(--shadow-xl)' }} />
             </div>
           </div>
           <div className="col-lg-8">

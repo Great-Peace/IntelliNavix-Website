@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/team-section.css';
 
@@ -256,7 +255,7 @@ const About = () => (
             {
               name: 'Dr. Yakubu Balogun',
               title: 'Founder & Lead Data Strategist',
-              img: '/assets/Dr_Yakubu.png',
+              img: `${import.meta.env.BASE_URL}assets/Dr_Yakubu.png`,
               bio: '15+ years of experience in data analytics and business intelligence. Former Microsoft senior consultant with expertise in transforming organizational data strategies.',
               tags: ['Data Strategy', 'Business Intelligence', 'Machine Learning'],
               color: 'primary',
@@ -264,7 +263,7 @@ const About = () => (
             {
               name: 'Mr. Anthony Mbata',
               title: 'Senior Business Analyst',
-              img: '/assets/tony.png',
+              img: `${import.meta.env.BASE_URL}assets/tony.png`,
               bio: '12 years of experience in business analysis and process optimization. Specialized in bridging technical solutions with business requirements.',
               tags: ['Business Analysis', 'Process Design', 'Stakeholder Management'],
               color: 'success',
@@ -272,7 +271,7 @@ const About = () => (
             {
               name: 'Mrs. Yakubu',
               title: 'Project Management Director',
-              img: '/assets/Dr_Yakubu.png',
+              img: `${import.meta.env.BASE_URL}assets/Dr_Yakubu.png`,
               bio: '10+ years leading complex digital transformation projects. Certified PMP with expertise in agile methodologies and organizational change management.',
               tags: ['Project Management', 'Agile/Scrum', 'Digital Transformation'],
               color: 'warning',
@@ -280,13 +279,12 @@ const About = () => (
             {
               name: 'Ms. Sarah Johnson',
               title: 'Lead Data Scientist',
-              img: '/assets/team-2.jpg',
+              img: `${import.meta.env.BASE_URL}/assets/team-2.jpg`,
               bio: 'Expert in predictive analytics and AI-driven solutions. Passionate about mentoring future data leaders.',
               tags: ['AI', 'Predictive Analytics', 'Mentorship'],
               color: 'info',
             },
-            
-          ].map((member, idx) => (
+          ].map((member) => (
             <div className="col-sm-6 col-md-4 col-lg-3" key={member.name}>
               <div className="team-card h-100 d-flex flex-column align-items-center text-center bg-white shadow rounded-4 p-3">
                 <div className="team-img-container position-relative mb-3">
@@ -326,7 +324,7 @@ const About = () => (
             {
               name: 'Ms. Jane Doe',
               title: 'Office Administrator',
-              img: '/assets/team-4.jpg',
+              img: `${import.meta.env.BASE_URL}/assets/team-4.jpg`,
               bio: 'Ensures smooth daily operations and provides top-notch support to staff and students.',
               tags: ['Administration', 'Support'],
               color: 'danger',
@@ -334,7 +332,7 @@ const About = () => (
             {
               name: 'Mr. John Smith',
               title: 'Technical Support Specialist',
-              img: '/assets/team-1.jpg',
+              img: `${import.meta.env.BASE_URL}/assets/team-1.jpg`,
               bio: 'Expert in troubleshooting and technical support for all our digital platforms.',
               tags: ['Tech Support', 'Customer Service'],
               color: 'primary',
@@ -342,7 +340,7 @@ const About = () => (
             {
               name: 'Mr. Samuel Lee',
               title: 'Senior Data Engineer',
-              img: '/assets/team-3.jpg',
+              img: `${import.meta.env.BASE_URL}/assets/team-3.jpg`,
               bio: 'Specialist in big data infrastructure and cloud solutions. Loves building scalable data pipelines.',
               tags: ['Big Data', 'Cloud', 'Pipelines'],
               color: 'secondary',
@@ -350,12 +348,12 @@ const About = () => (
             {
               name: 'Mrs. Iyanuoluwa Orimolade',
               title: 'Office Administrator',
-              img: '/assets/team-4.jpg',
+              img: `${import.meta.env.BASE_URL}/assets/team-4.jpg`,
               bio: 'Ensures smooth daily operations and provides top-notch support to staff and students.',
               tags: ['Administration', 'Support'],
               color: 'purple',
             },
-          ].map((member, idx) => (
+          ].map((member) => (
             <div className="col-sm-6 col-md-4 col-lg-3" key={member.name}>
               <div className="team-card h-100 d-flex flex-column align-items-center text-center bg-white shadow rounded-4 p-3">
                 <div className="team-img-container position-relative mb-3">

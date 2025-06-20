@@ -108,9 +108,9 @@ const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ icon, title, de
 );
 
 const tools = [
-  { name: 'Jira', logo: '/assets/jira.png', alt: 'Jira Logo' },
-  { name: 'Confluence', logo: '/assets/confluence.png', alt: 'Confluence Logo' },
-  { name: 'Project', logo: '/assets/project.png', alt: 'Microsoft Project Logo' },
+  { name: 'Jira', logo: `${import.meta.env.BASE_URL}assets/Jira.png`, alt: 'Jira Logo' },
+  { name: 'Confluence', logo: `${import.meta.env.BASE_URL}assets/confluence.png`, alt: 'Confluence Logo' },
+  { name: 'Project', logo: `${import.meta.env.BASE_URL}assets/project.jpg`, alt: 'Microsoft Project Logo' },
 ];
 
 const ProjectManagement = () => {
@@ -159,7 +159,7 @@ const ProjectManagement = () => {
               transition={{ duration: 0.8, type: 'spring', delay: 0.2 }}
             >
               <img
-                src="/assets/projectmanagement.png"
+                src={`${import.meta.env.BASE_URL}assets/projectmanagement.jpg`}
                 alt="Project Management Illustration"
                 className="img-fluid rounded-4 shadow-lg"
                 style={{ maxWidth: 520, minHeight: 320, background: '#fff', border: '6px solid #e0f7fa' }}
@@ -174,9 +174,9 @@ const ProjectManagement = () => {
           animate={{ opacity: 0.12 }}
           style={{ zIndex: 1, pointerEvents: 'none' }}
         >
-          <img src="/assets/jira.png" alt="Jira" style={{ position: 'absolute', top: 40, left: 60, width: 70, opacity: 0.7 }} />
-          <img src="/assets/confluence.png" alt="Confluence" style={{ position: 'absolute', bottom: 60, right: 80, width: 70, opacity: 0.7 }} />
-          <img src="/assets/project.png" alt="MS Project" style={{ position: 'absolute', top: 120, right: 120, width: 60, opacity: 0.7 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/jira.png`} alt="Jira" style={{ position: 'absolute', top: 40, left: 60, width: 70, opacity: 0.7 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/confluence.png`} alt="Confluence" style={{ position: 'absolute', bottom: 60, right: 80, width: 70, opacity: 0.7 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/project.png`} alt="MS Project" style={{ position: 'absolute', top: 120, right: 120, width: 60, opacity: 0.7 }} />
         </motion.div>
       </section>
 

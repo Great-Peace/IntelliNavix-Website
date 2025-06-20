@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
@@ -8,7 +7,7 @@ const Footer = () => (
         <div className="col-lg-4">
           <div className="footer-brand mb-3">
             <Link to="/" className="footer-logo d-flex align-items-center mb-2 text-light text-decoration-none">
-              <img src="/assets/logo1.jpg" alt="Logo" style={{ maxHeight: 40, marginRight: 8 }} />
+              <img src={`${import.meta.env.BASE_URL}assets/logo1.jpg`} alt="Logo" style={{ maxHeight: 40, marginRight: 8 }} />
               <span className="fw-bold">intelliNavix</span>
             </Link>
             <p className="footer-description small">

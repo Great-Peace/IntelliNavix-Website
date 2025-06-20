@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 const Navbar = ({ onDropdownChange }: { onDropdownChange?: (open: boolean) => void }) => {
@@ -13,7 +13,7 @@ const Navbar = ({ onDropdownChange }: { onDropdownChange?: (open: boolean) => vo
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container d-flex justify-content-between align-items-center">
         <Link className="navbar-brand d-flex align-items-center" to="/">
-          <img src="/assets/logo1.jpg" alt="Logo" style={{ maxHeight: 50, marginRight: 8 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/logo1.jpg`} alt="Logo" style={{ maxHeight: 50, marginRight: 8 }} />
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

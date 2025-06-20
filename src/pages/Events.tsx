@@ -24,7 +24,7 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '10:00 AM',
     location: 'Virtual',
     type: 'Workshop',
-    image: '/assets/ms_excel.jpg',
+    image: `${import.meta.env.BASE_URL}assets/ms_excel.jpg`,
     link: '#',
     description: 'A hands-on workshop covering SQL basics, queries, and data manipulation for beginners and professionals.',
     highlights: ['Live coding', 'Q&A session', 'Certificate of participation'],
@@ -37,7 +37,7 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '09:00 AM',
     location: 'London, UK',
     type: 'Masterclass',
-    image: '/assets/business_analysis.png',
+    image: `${import.meta.env.BASE_URL}assets/business_analysis.png`,
     link: '#',
     description: 'Masterclass on business analysis techniques, stakeholder management, and real-world case studies.',
     highlights: ['Expert speakers', 'Networking', 'Case studies'],
@@ -50,7 +50,7 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '14:00 PM',
     location: 'Virtual',
     type: 'Bootcamp',
-    image: '/assets/power_BI.png',
+    image: `${import.meta.env.BASE_URL}assets/power_BI.png`,
     link: '#',
     description: 'Intensive bootcamp on project management essentials, tools, and agile methodologies.',
     highlights: ['Agile tools', 'Team exercises', 'Career tips'],
@@ -278,12 +278,6 @@ const Events: React.FC = () => {
     }, 0);
   }
 
-  // Scroll to top for 'View All Events' (if used as a button or anchor)
-  function scrollToTop(e?: React.MouseEvent) {
-    if (e) e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
   return (
     <div style={{ paddingTop: '90px' }}>
       {/* Hero Section */}
@@ -297,7 +291,7 @@ const Events: React.FC = () => {
           <a href="#past" className="btn btn-outline-light btn-lg px-4">Past Events</a>
           <a href="#top" className="visually-hidden" tabIndex={-1} aria-hidden="true"></a>
         </div>
-        <div className="events-hero-bg position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.08, background: 'url(/assets/event-poster-1.jpg) center/cover no-repeat' }}></div>
+        <div className="events-hero-bg position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.08, background: `url(${import.meta.env.BASE_URL}assets/event-poster-1.jpg) center/cover no-repeat` }}></div>
       </section>
 
       {/* Upcoming Events */}

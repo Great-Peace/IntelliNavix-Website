@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StartJourneyModal } from './Home';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
@@ -55,7 +55,8 @@ const enrollBtnStyle = {
   fontWeight: 600,
 };
 
-const CourseOverviewCard = ({ icon, title, desc, delay, idx }) => (
+type CourseOverviewCardProps = { icon: string; title: string; desc: string; delay: number; idx: number; };
+const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ icon, title, desc, delay, idx }) => (
   <motion.div
     className="col-md-6 col-lg-4 d-flex"
     initial={{ opacity: 0, y: 40 }}
@@ -145,7 +146,7 @@ const AgileScrum = () => {
               transition={{ duration: 0.8, type: 'spring', delay: 0.2 }}
             >
               <img
-                src="/assets/agilescrum.png"
+                src={`${import.meta.env.BASE_URL}/assets/agilescrum.png`}
                 alt="Agile Scrum Illustration"
                 className="img-fluid rounded-4 shadow-lg"
                 style={{ maxWidth: 520, minHeight: 320, background: '#fff', border: '6px solid #e0f2f1' }}

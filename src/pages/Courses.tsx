@@ -1,4 +1,3 @@
-import React from 'react';
 const Courses = () => (
   <div className="container py-5">
     <div className="row justify-content-center">

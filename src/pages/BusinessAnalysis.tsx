@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StartJourneyModal } from './Home';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
@@ -55,7 +55,8 @@ const enrollBtnStyle = {
   fontWeight: 600,
 };
 
-const CourseOverviewCard = ({ icon, title, desc, delay, idx }) => (
+type CourseOverviewCardProps = { icon: string; title: string; desc: string; delay: number; idx: number; };
+const CourseOverviewCard: React.FC<CourseOverviewCardProps> = ({ icon, title, desc, delay, idx }) => (
   <motion.div
     className="col-md-6 col-lg-4 d-flex"
     initial={{ opacity: 0, y: 40 }}
@@ -100,9 +101,9 @@ const CourseOverviewCard = ({ icon, title, desc, delay, idx }) => (
 );
 
 const tools = [
-  { name: 'Lucidchart', logo: '/assets/lucidchart.png', alt: 'Lucidchart Logo' },
-  { name: 'Figma', logo: '/assets/figma.png', alt: 'Figma Logo' },
-  { name: 'Visio', logo: '/assets/visio.png', alt: 'Visio Logo' },
+  { name: 'Lucidchart', logo: `${import.meta.env.BASE_URL}assets/lucidchart.jpg`, alt: 'Lucidchart Logo' },
+  { name: 'Figma', logo: `${import.meta.env.BASE_URL}assets/Figma.png`, alt: 'Figma Logo' },
+  { name: 'Visio', logo: `${import.meta.env.BASE_URL}assets/Visio.png`, alt: 'Visio Logo' },
 ];
 
 const BusinessAnalysis = () => {
@@ -151,7 +152,7 @@ const BusinessAnalysis = () => {
               transition={{ duration: 0.8, type: 'spring', delay: 0.2 }}
             >
               <img
-                src="/assets/business_analysis.png"
+                src={`${import.meta.env.BASE_URL}assets/business_analysis.png`}
                 alt="Business Analysis Illustration"
                 className="img-fluid rounded-4 shadow-lg"
                 style={{ maxWidth: 520, minHeight: 320, background: '#fff', border: '6px solid #fdf6e3' }}
@@ -166,9 +167,9 @@ const BusinessAnalysis = () => {
           animate={{ opacity: 0.12 }}
           style={{ zIndex: 1, pointerEvents: 'none' }}
         >
-          <img src="/assets/figma.png" alt="Figma" style={{ position: 'absolute', top: 40, left: 60, width: 70, opacity: 0.7 }} />
-          <img src="/assets/lucidchart.png" alt="Lucidchart" style={{ position: 'absolute', bottom: 60, right: 80, width: 70, opacity: 0.7 }} />
-          <img src="/assets/visio.png" alt="Visio" style={{ position: 'absolute', top: 120, right: 120, width: 60, opacity: 0.7 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/figma.png`} alt="Figma" style={{ position: 'absolute', top: 40, left: 60, width: 70, opacity: 0.7 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/lucidchart.png`} alt="Lucidchart" style={{ position: 'absolute', bottom: 60, right: 80, width: 70, opacity: 0.7 }} />
+          <img src={`${import.meta.env.BASE_URL}assets/visio.png`} alt="Visio" style={{ position: 'absolute', top: 120, right: 120, width: 60, opacity: 0.7 }} />
         </motion.div>
       </section>
 

@@ -21,7 +21,7 @@ const TestimonialsSection: React.FC = () => (
           </div>
           <div className="testimonial-author">
             <div className="author-avatar">
-              <img src="/assets/Dr_Yakubu.png" alt="Sam G." />
+              <img src={`${import.meta.env.BASE_URL}assets/Dr_Yakubu.png`} alt="Sam G." />
             </div>
             <div className="author-info">
               <h5>Sam G.</h5>
@@ -45,7 +45,7 @@ const TestimonialsSection: React.FC = () => (
           </div>
           <div className="testimonial-author">
             <div className="author-avatar">
-              <img src="/assets/Dr_Yakubu.png" alt="Rose O." />
+              <img src={`${import.meta.env.BASE_URL}/assets/Dr_Yakubu.png`} alt="Rose O." />
             </div>
             <div className="author-info">
               <h5>Rose O.</h5>
@@ -69,7 +69,7 @@ const TestimonialsSection: React.FC = () => (
           </div>
           <div className="testimonial-author">
             <div className="author-avatar">
-              <img src="/assets/Dr_Yakubu.png" alt="O.A. Taiwo" />
+              <img src={`${import.meta.env.BASE_URL}/assets/Dr_Yakubu.png`} alt="O.A. Taiwo" />
             </div>
             <div className="author-info">
               <h5>O.A. Taiwo</h5>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FastAverageColor } from 'fast-average-color';
 import { useNavigate, Link } from 'react-router-dom';
 import { upcomingEvents } from './Events';
@@ -8,14 +8,14 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import Navbar from '../components/Navbar';
 
 const eventSlides = [
-  { src: '/assets/event-poster-1.jpg', alt: 'From Data to Insight' },
-  { src: '/assets/event-poster-2.jpg', alt: 'SQL Workshop' },
-  { src: '/assets/event-poster-3.jpeg', alt: 'Business Analysis' },
-  { src: '/assets/event-poster-4.jpeg', alt: 'Advanced Analytics' },
-  { src: '/assets/event-poster-5.jpeg', alt: 'Data Visualization' },
-  { src: '/assets/event-poster-6.jpeg', alt: 'Machine Learning' },
-  { src: '/assets/event-poster-7.jpeg', alt: 'AI Workshop' },
-  { src: '/assets/event-poster-8.jpeg', alt: 'Data Science' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-1.jpg`, alt: 'From Data to Insight' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-2.jpg`, alt: 'SQL Workshop' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-3.jpeg`, alt: 'Business Analysis' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-4.jpeg`, alt: 'Advanced Analytics' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-5.jpeg`, alt: 'Data Visualization' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-6.jpeg`, alt: 'Machine Learning' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-7.jpeg`, alt: 'AI Workshop' },
+  { src: `${import.meta.env.BASE_URL}assets/event-poster-8.jpeg`, alt: 'Data Science' },
 ];
 
 const courseData = [
@@ -454,7 +454,7 @@ const Home = () => {
             <div className="col-lg-6 position-relative d-flex align-items-stretch">
               <div className="hero-visual w-100 d-flex align-items-stretch">
                 <div className="hero-image-container w-100 h-100 mx-auto" style={{ maxWidth: '640px', minHeight: '420px', height: '100%' }}>
-                  <img src="/assets/empower_business.png" alt="Data Analytics Dashboard" className="hero-image" style={{ width: '100%', height: 'auto', maxWidth: '640px', minWidth: '420px', minHeight: '420px', objectFit: 'cover', boxShadow: '0 8px 32px rgba(60,60,180,0.10)', borderRadius: '24px' }} />
+                  <img src={`${import.meta.env.BASE_URL}assets/empower_business.png`} alt="Data Analytics Dashboard" className="hero-image" style={{ width: '100%', height: 'auto', maxWidth: '640px', minWidth: '420px', minHeight: '420px', objectFit: 'cover', boxShadow: '0 8px 32px rgba(60,60,180,0.10)', borderRadius: '24px' }} />
                   {/* Floating Elements - move closer to image */}
                   <div className="floating-card card-1" style={{ top: '18px', left: '18px', transform: 'translate(0, 0)', zIndex: 2 }}>
                     <div className="mini-chart">
@@ -727,7 +727,7 @@ const Home = () => {
                 msOverflowStyle: 'none',
               }}
             >
-              {filteredCourses.map((course, idx) => (
+              {filteredCourses.map((course) => (
                 <div
                   key={course.title}
                   className={`course-card${course.featured ? ' featured-course' : ''}`}
