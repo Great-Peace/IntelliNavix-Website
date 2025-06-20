@@ -46,6 +46,14 @@ const steps = [
 const CIRCLE_CENTER = { x: 250, y: 250 };
 const RADIUS = 190;
 
+const getStepPosition = (angleDeg: number) => {
+  const angleRad = (angleDeg * Math.PI) / 180;
+  return {
+    x: CIRCLE_CENTER.x + RADIUS * Math.cos(angleRad),
+    y: CIRCLE_CENTER.y + RADIUS * Math.sin(angleRad),
+  };
+};
+
 const JourneySection: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0); // 0-4
   const [paused, setPaused] = useState(false);
@@ -159,14 +167,23 @@ const JourneySection: React.FC = () => {
                 </div>
               </div>
               {/* Step Numbers */}
-              {steps.map((step, i) => (
-                <div
-                  key={step.number}
-                  className={`step-number step-${step.number}${currentStep === i ? ' active' : ''}`}
-                >
-                  {step.number.toString().padStart(2, '0')}
-                </div>
-              ))}
+              {steps.map((step, i) => {
+                const position = getStepPosition(step.angle);
+                return (
+                  <div
+                    key={step.number}
+                    className={`step-number step-${step.number}${currentStep === i ? ' active' : ''}`}
+                    style={{
+                      position: 'absolute',
+                      left: `${position.x}px`,
+                      top: `${position.y}px`,
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                  >
+                    {step.number.toString().padStart(2, '0')}
+                  </div>
+                );
+              })}
               {/* Step Dialog (Details) */}
               {steps.map((step, i) => {
                 if (currentStep !== i && !paused) return null;
@@ -298,14 +315,23 @@ const JourneySection: React.FC = () => {
                 </div>
               </div>
               {/* Step Numbers */}
-              {steps.map((step, i) => (
-                <div
-                  key={step.number}
-                  className={`step-number step-${step.number}${currentStep === i ? ' active' : ''}`}
-                >
-                  {step.number.toString().padStart(2, '0')}
-                </div>
-              ))}
+              {steps.map((step, i) => {
+                const position = getStepPosition(step.angle);
+                return (
+                  <div
+                    key={step.number}
+                    className={`step-number step-${step.number}${currentStep === i ? ' active' : ''}`}
+                    style={{
+                      position: 'absolute',
+                      left: `${position.x}px`,
+                      top: `${position.y}px`,
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                  >
+                    {step.number.toString().padStart(2, '0')}
+                  </div>
+                );
+              })}
               {/* Step Dialog (Details) */}
               {steps.map((step, i) => {
                 if (currentStep !== i && !paused) return null;
