@@ -60,42 +60,42 @@ export const upcomingEvents: UpcomingEvent[] = [
 const pastEvents = [
   {
     title: 'From Data to Insight',
-    image: '/assets/event-poster-1.jpg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-1.jpg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'SQL Workshop',
-    image: '/assets/event-poster-2.jpg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-2.jpg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'Business Analysis',
-    image: '/assets/event-poster-3.jpeg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-3.jpeg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'Advanced Analytics',
-    image: '/assets/event-poster-4.jpeg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-4.jpeg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'Data Visualization',
-    image: '/assets/event-poster-5.jpeg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-5.jpeg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'Machine Learning',
-    image: '/assets/event-poster-6.jpeg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-6.jpeg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'AI Workshop',
-    image: '/assets/event-poster-7.jpeg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-7.jpeg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
     title: 'Data Science',
-    image: '/assets/event-poster-8.jpeg',
+    image: `${import.meta.env.BASE_URL}/assets/event-poster-8.jpeg`,
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
 ];
@@ -104,25 +104,25 @@ const testimonials = [
   {
     name: 'Sarah O.',
     role: 'Data Analyst, London',
-    photo: '/assets/team-1.jpg',
+    photo: `${import.meta.env.BASE_URL}/assets/team-1.jpg`,
     quote: 'The SQL Workshop was a game-changer for my career. The hands-on approach and expert guidance made all the difference!'
   },
   {
     name: 'James T.',
     role: 'Business Consultant, Manchester',
-    photo: '/assets/team-2.jpg',
+    photo: `${import.meta.env.BASE_URL}/assets/team-2.jpg`,
     quote: 'The Business Analysis Masterclass gave me practical tools I use every day. Highly recommended!'
   },
   {
     name: 'Aisha B.',
     role: 'Project Manager, Birmingham',
-    photo: '/assets/team-3.jpg',
+    photo: `${import.meta.env.BASE_URL}/assets/team-3.jpg`,
     quote: 'The Project Management Bootcamp was intense and rewarding. I left with new skills and a great network.'
   },
   {
     name: 'Samuel K.',
     role: 'Graduate, Glasgow',
-    photo: '/assets/team-4.jpg',
+    photo: `${import.meta.env.BASE_URL}/assets/team-4.jpg`,
     quote: 'IntelliNavix events are always inspiring and practical. I keep coming back for more!'
   },
 ];
