@@ -9,6 +9,14 @@
   </head>
   <body>
     <div id="root"></div>
+    <script type="text/javascript">
+      // Restore the redirect path from sessionStorage
+      const redirectPath = sessionStorage.getItem('redirectPath');
+      sessionStorage.removeItem('redirectPath'); // Clean up
+      if (redirectPath && redirectPath !== '/') {
+        window.history.replaceState(null, null, import.meta.env.BASE_URL + redirectPath.substring(1));
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
