@@ -7,8 +7,8 @@ const Footer = () => (
         <div className="col-lg-4">
           <div className="footer-brand mb-3">
             <Link to="/" className="footer-logo d-flex align-items-center mb-2 text-light text-decoration-none">
-              <img src={`${import.meta.env.BASE_URL}assets/logo1.jpg`} alt="Logo" style={{ maxHeight: 40, marginRight: 8 }} />
-              <span className="fw-bold">intelliNavix</span>
+              <img src={`${import.meta.env.BASE_URL}assets/logo1.png`} alt="Logo" style={{ maxHeight: 40, marginRight: 8 }} />
+              <span className="fw-bold"></span>
             </Link>
             <p className="footer-description small">
               Empowering the next generation of data professionals through cutting-edge training and mentorship.
