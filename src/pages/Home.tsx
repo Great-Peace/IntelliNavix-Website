@@ -331,7 +331,6 @@ const Home = () => {
       const fac = new FastAverageColor();
       fac.getColorAsync(img)
         .then((color: any) => {
-          console.log('Extracted color for slide', idx, color.rgb);
           setSlideColors((prev) => {
             const updated = [...prev];
             updated[idx] = color.rgb;
@@ -352,9 +351,6 @@ const Home = () => {
   const filteredCourses = courseFilter === 'all'
     ? courseData
     : courseData.filter((c) => c.category === courseFilter);
-
-  // Debug: log slideColors before render
-  console.log('slideColors:', slideColors);
 
   // Sort and get the 3 closest upcoming events
   const sortedUpcoming = [...upcomingEvents]
