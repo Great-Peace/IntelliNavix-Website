@@ -187,7 +187,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, ev
       };
       
       // TODO: Replace with your Google Apps Script URL
-      const response = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzJwuikPjgXeVSTz_fayETmY89_Qntb08_pNpW3csSJNIbPd6Sp0rT-qysGGIuY05FV/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formDataWithTimestamp),
