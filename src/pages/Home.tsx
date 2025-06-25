@@ -106,7 +106,7 @@ const NewsletterForm = () => {
     setSuccess('');
     setError('');
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycby7HIQ5WU8VjTD-B3qy06xvlfLWLxYkEWY_FU-JEnQTqxkhL3yXlfmyNzTV803exAFx/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwkB57dAg-kCbenC1PI5Dlmfv_yVxhQAfjpC_9y7tZ5GP-fzzdxXyOi_QdJoS1e8uoGww/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -192,7 +192,7 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
     setSuccess('');
     setError('');
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycby7HIQ5WU8VjTD-B3qy06xvlfLWLxYkEWY_FU-JEnQTqxkhL3yXlfmyNzTV803exAFx/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyw83Finy2YsgOsuI6OB0bgqyEyOAGfGthG0k7912IaMf8N61iMIphO1VAv-PzSkb5ErQ/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

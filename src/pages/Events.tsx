@@ -155,17 +155,22 @@ type RegistrationModalProps = {
   show: boolean;
   onClose: () => void;
   event: Partial<UpcomingEvent>;
+  onRegistrationSuccess?: (eventId: string) => void;
 };
 
-const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, event }) => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, event, onRegistrationSuccess }) => {
+  const [form, setForm] = useState({ name: '', email: '', message: '', selectedEvent: event.title || '' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    setForm(f => ({ ...f, selectedEvent: event.title || '' }));
+  }, [event.title]);
+
   if (!show) return null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -175,16 +180,26 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, ev
     setSuccess('');
     setError('');
     try {
+      // Add registration timestamp
+      const formDataWithTimestamp = {
+        ...form,
+        registrationDate: new Date().toISOString()
+      };
+      
       // TODO: Replace with your Google Apps Script URL
       const response = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, event: event.title }),
+        body: JSON.stringify(formDataWithTimestamp),
       });
       const data = await response.json();
       if (data.result === 'success') {
         setSuccess('Registration successful! Check your email for confirmation.');
-        setForm({ name: '', email: '', message: '' });
+        setForm({ name: '', email: '', message: '', selectedEvent: event.title || '' });
+        // Call the callback to mark this event as registered
+        if (onRegistrationSuccess && event.id) {
+          onRegistrationSuccess(event.id);
+        }
       } else {
         setError('Sorry, something went wrong. Please try again later.');
       }
@@ -205,6 +220,15 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, ev
           </div>
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label className="form-label">Event</label>
+                <select className="form-select" name="selectedEvent" value={form.selectedEvent} onChange={handleChange} required>
+                  <option value="" disabled>Select an event</option>
+                  {upcomingEvents.map((ev) => (
+                    <option key={ev.id} value={ev.title}>{ev.title}</option>
+                  ))}
+                </select>
+              </div>
               <div className="mb-3">
                 <label className="form-label">Name</label>
                 <input type="text" className="form-control" name="name" value={form.name} onChange={handleChange} required />
@@ -234,6 +258,7 @@ const NAVBAR_OFFSET = 90; // px, matches Home page and navbar height
 
 const Events: React.FC = () => {
   const [modalEvent, setModalEvent] = useState<UpcomingEvent | null>(null);
+  const [registeredEvents, setRegisteredEvents] = useState<Set<string>>(new Set());
 
   // Smooth scroll with offset for anchor links
   useEffect(() => {
@@ -260,6 +285,11 @@ const Events: React.FC = () => {
 
   // Download ICS file for event
   function handleAddToCalendar(event: UpcomingEvent) {
+    if (!registeredEvents.has(event.id)) {
+      alert('Please register for this event first before adding it to your calendar.');
+      return;
+    }
+    
     const start = formatICSDate(event.dateObj);
     // Assume 2 hours duration for now
     const endDate = new Date(event.dateObj.getTime() + 2 * 60 * 60 * 1000);
@@ -323,7 +353,14 @@ const Events: React.FC = () => {
                     </ul>
                     <div className="mt-auto d-flex gap-2">
                       <button className="btn btn-primary btn-sm w-100" onClick={() => setModalEvent(event)}>Register</button>
-                      <button className="btn btn-outline-secondary btn-sm w-100" onClick={() => handleAddToCalendar(event)}>Add to Calendar</button>
+                      <button 
+                        className={`btn btn-sm w-100 ${registeredEvents.has(event.id) ? 'btn-outline-secondary' : 'btn-outline-secondary disabled'}`} 
+                        onClick={() => handleAddToCalendar(event)}
+                        disabled={!registeredEvents.has(event.id)}
+                        title={registeredEvents.has(event.id) ? 'Add to Calendar' : 'Register first to add to calendar'}
+                      >
+                        {registeredEvents.has(event.id) ? 'Add to Calendar' : 'Register First'}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -334,7 +371,7 @@ const Events: React.FC = () => {
       </section>
 
       {/* Registration Modal */}
-      <RegistrationModal show={!!modalEvent} onClose={() => setModalEvent(null)} event={modalEvent || {}} />
+      <RegistrationModal show={!!modalEvent} onClose={() => setModalEvent(null)} event={modalEvent || {}} onRegistrationSuccess={(eventId) => setRegisteredEvents(prev => new Set(prev).add(eventId))} />
 
       {/* Event Highlights */}
       <section className="event-highlights-section py-5 bg-white">

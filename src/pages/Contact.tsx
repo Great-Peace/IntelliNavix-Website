@@ -21,9 +21,18 @@ const Contact = () => {
     setSuccess('');
     setError('');
     try {
-      // Replace with the Google Apps Script or other backend logic for form submission
-      setSuccess('Thank you! Your message has been sent.');
-      setForm({ name: '', email: '', subject: '', message: '' });
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwGMIRLBXE5M1UiBdgfzDNEFNgLtgIrRZq4Y4fOuPfX1qsh4rIsmNld-QX0WVo04kXLlQ/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      if (data.result === 'success') {
+        setSuccess('Thank you! Your message has been sent.');
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setError('Sorry, something went wrong. Please try again later.');
+      }
     } catch (err) {
       setError('Sorry, something went wrong. Please try again later.');
     } finally {

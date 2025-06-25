@@ -14,11 +14,11 @@ const Footer = () => (
               Empowering the next generation of data professionals through cutting-edge training and mentorship.
             </p>
             <div className="social-links mt-2">
-              <a href="#" className="me-2 text-light" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-              <a href="#" className="me-2 text-light" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="me-2 text-light" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
-              <a href="#" className="me-2 text-light" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" className="text-light" aria-label="YouTube"><i className="fab fa-youtube"></i></a>
+              <a href="https://www.facebook.com/intellinavixcareers/" className="me-2 text-light" aria-label="Facebook" target='_blank'><i className="fab fa-facebook-f"></i></a>
+              <a href="https://x.com/IntelliNavix" className="me-2 text-light" aria-label="Twitter" target='_blank'><i className="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/intellinavix/" className="me-2 text-light" aria-label="Instagram" target='_blank'><i className="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/intellinavix-limited/posts/?feedView=all" className="me-2 text-light" aria-label="LinkedIn" target='_blank'><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://www.youtube.com/@intellinavixcareers" className="text-light" aria-label="YouTube" target='_blank'><i className="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>
