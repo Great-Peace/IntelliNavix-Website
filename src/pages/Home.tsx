@@ -33,7 +33,8 @@ const courseData = [
       { icon: 'fab fa-python', label: 'Python' },
     ],
     progress: 94,
-    duration: '10 weeks',
+    duration: '10 weeks Training',
+    work: '12 weeks Work Experience',
     enrolled: '500+',
     price: '£550',
     originalPrice: '£750',
@@ -47,31 +48,34 @@ const courseData = [
       { icon: 'fas fa-certificate', label: 'Industry Certification' },
       { icon: 'fas fa-project-diagram', label: 'Real Projects' },
     ],
-    duration: '8 weeks',
+    duration: '10 weeks Training',
+    work: '12 weeks Work Experience',
     price: '£600',
   },
   {
     category: 'management',
-    title: 'Project Management (PMO)',
+    title: 'Project Management',
     rating: 4.8,
     description: 'Master project lifecycle, risk management, and stakeholder communication for successful delivery',
     highlights: [
       { icon: 'fas fa-award', label: 'PMP Preparation' },
       { icon: 'fas fa-tools', label: 'PM Tools Training' },
     ],
-    duration: '6 weeks',
+    duration: '10 weeks Training',
+    work: '12 weeks Work Experience',
     price: '£600',
   },
   {
     category: 'agile',
     title: 'Agile Scrum Methodologies',
-    rating: 3.9,
+    rating: 4.5,
     description: 'Become a certified Scrum Master and lead agile transformations in modern organizations',
     highlights: [
       { icon: 'fas fa-certificate', label: 'Scrum Master Cert' },
       { icon: 'fas fa-rocket', label: 'Agile Coaching' },
     ],
-    duration: '4 weeks',
+    duration: '10 weeks Training',
+    work: '12 weeks Work Experience',
     price: '£600',
   },
 ];
@@ -872,6 +876,10 @@ const Home = () => {
                       <div className="meta-item">
                         <i className="fas fa-clock"></i>
                         <span>{course.duration}</span>
+                      </div>
+                      <div className="meta-item">
+                        <i className="fas fa-clock"></i>
+                        <span>{course.work}</span>
                       </div>
                       {course.enrolled && (
                         <div className="meta-item">
