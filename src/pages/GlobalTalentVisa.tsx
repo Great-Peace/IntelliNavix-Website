@@ -103,7 +103,7 @@ const GlobalTalentVisa = () => (
         <div className="row align-items-center">
           <div className="col-lg-4">
             <div className="text-center">
-              <img src={`${import.meta.env.BASE_URL}assets/Yakubu.png`} alt="Dr. Yakubu Balogun" style={{ width: 300, height: 300, objectFit: 'cover', borderRadius: 20, boxShadow: 'var(--shadow-xl)' }} />
+              <img src={`${import.meta.env.BASE_URL}assets/Yakubu.png`} alt="Dr. Yakubu Balogun" style={{ width: 320, height: 320, objectFit: 'cover', objectPosition: 'center 10%', borderRadius: 20, boxShadow: 'var(--shadow-xl)' }} />
             </div>
           </div>
           <div className="col-lg-8">
