@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import '../styles/team-section.css';
 import { Helmet } from 'react-helmet-async';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const teamCardStyles = `
 .team-image-container {
@@ -16,6 +16,7 @@ const teamCardStyles = `
   width: 100%;
   height: 260px;
   object-fit: cover;
+  object-position: top;
   border-radius: 24px;
   display: block;
 }
@@ -57,28 +58,40 @@ const teamMembers = [
     title: 'Principal Data Analysis Trainer at IntelliNavix Limited',
     img: import.meta.env.BASE_URL + 'assets/tony.png',
     summary: 'Principal Data Analysis Trainer specializing in SQL, Python, and Excel for data professionals. 19+ years of IT and data experience across multiple industries.',
-    full: `Anthony Mbata is a Principal Data Analysis Trainer at IntelliNavix Limited, specialising in SQL training, Python for data analysis, and Excel for data professionals. He holds a Master's degree in Data Science and is currently pursuing a PhD in Data Engineering. With over 19 years of extensive IT and data-related experience.\nAnthony has worked across multiple industries, including oil and gas, financial services, artificial intelligence, and energy. Anthony offers customised, flexible online training sessions designed to help professionals and career changers develop practical skills in data analysis, data manipulation, and data visualisation using tools like SQL, Python, and Excel. His training focuses on real-world applications to prepare learners for successful careers in data analysis, data science, data engineering, and analytics roles.\nIn addition to technical training, Anthony provides expert career guidance, CV reviews, interview preparation, and confidence-building coaching to support learners in transitioning into data roles and thriving in the competitive data industry.`
+    full: `Anthony Mbata is a Principal Data Analysis Trainer at IntelliNavix Limited, specialising in SQL training, Python for data analysis, and Excel for data professionals. He holds a Master's degree in Data Science and is currently pursuing a PhD in Data Engineering. With over 19 years of extensive IT and data-related experience.\nAnthony has worked across multiple industries, including oil and gas, financial services, artificial intelligence, and energy. Anthony offers customised, flexible online training sessions designed to help professionals and career changers develop practical skills in data analysis, data manipulation, and data visualisation using tools like SQL, Python, and Excel. His training focuses on real-world applications to prepare learners for successful careers in data analysis, data science, data engineering, and analytics roles.\nIn addition to technical training, Anthony provides expert career guidance, CV reviews, interview preparation, and confidence-building coaching to support learners in transitioning into data roles and thriving in the competitive data industry.`,
+    linkedin: 'https://www.linkedin.com/in/anthony-mbata/',
+    twitter: 'https://twitter.com/anthony_mbata',
+    email: 'mailto:anthony.mbata@intellinavix.com'
   },
   {
     name: 'Dr. Yakubu Balogun',
     title: 'Lead Data Analysis Trainer | Data Modeller| BI Consultant',
     img: import.meta.env.BASE_URL + 'assets/Yakubu.png',
     summary: 'Microsoft Certified Data Analyst with 10+ years of experience in data modeling, automation, and analytics. Leads data analytics training at IntelliNavix.',
-    full: `Dr. Yakubu Balogun is a Microsoft Certified Data Analyst and seasoned data professional with over 10  years of experience driving value through data modeling, automation, and advanced analytics. At IntelliNavix Careers, he leads data analytics training programs designed to empower professionals with the skills and tools needed to thrive in today's data-driven economy.\nWith a proven track record across government, energy, and health sectors - including the UK Civil Service, Wood Mackenzie, and Shell - Yakubu combines deep technical expertise in Power BI, Python, SQL, and cloud platforms (AWS, Azure, Snowflake) with a passion for real-world problem solving. His work includes building scalable data pipelines, developing forecasting models, and creating interactive dashboards that deliver actionable insights to stakeholders.\nHe holds a PhD in Engineering from Robert Gordon University in Aberdeen and has delivered research and analytics projects on public health, energy forecasting, and operations optimization. He is a strong advocate for data literacy and AI adoption, especially within education and emerging economies, and continues to mentor the next generation of data leaders through his workshops, mentorships, and online platforms.`
+    full: `Dr. Yakubu Balogun is a Microsoft Certified Data Analyst and seasoned data professional with over 10  years of experience driving value through data modeling, automation, and advanced analytics. At IntelliNavix Careers, he leads data analytics training programs designed to empower professionals with the skills and tools needed to thrive in today's data-driven economy.\nWith a proven track record across government, energy, and health sectors - including the UK Civil Service, Wood Mackenzie, and Shell - Yakubu combines deep technical expertise in Power BI, Python, SQL, and cloud platforms (AWS, Azure, Snowflake) with a passion for real-world problem solving. His work includes building scalable data pipelines, developing forecasting models, and creating interactive dashboards that deliver actionable insights to stakeholders.\nHe holds a PhD in Engineering from Robert Gordon University in Aberdeen and has delivered research and analytics projects on public health, energy forecasting, and operations optimization. He is a strong advocate for data literacy and AI adoption, especially within education and emerging economies, and continues to mentor the next generation of data leaders through his workshops, mentorships, and online platforms.`,
+    linkedin: 'https://www.linkedin.com/in/dryakububalogun/',
+    twitter: 'https://x.com/Yakubu_PhD',
+    email: 'mailto:yakubu.balogun@intellinavix.com'
   },
   {
     name: 'Augustine Onovroke',
     title: 'Business Support Manager | Business Analyst & Project Manager',
     img: import.meta.env.BASE_URL + 'assets/augustine.jpg',
     summary: 'Business Support Manager with 20+ years in business analysis, project management, and operations support. Leads business analysis and PM training.',
-    full: `Augustine Onovroke is a strategic and results-driven professional with over 20 years with a strong background in business analysis, project management, and operations support. He has successfully led initiatives that enhance process efficiency, align strategic goals, and deliver measurable impact across diverse sectors.\nAt IntelliNavix Careers, Augustine leads business analysis and project management training programs designed to equip professionals with practical tools, methodologies, and frameworks for driving change and delivering value. His training approach bridges theory with real-world application, preparing learners to succeed in dynamic and complex work environments.\nAugustine is passionate about fostering a problem-solving mindset and empowering professionals to take ownership of projects from concept to completion. Backed by a formal business management degree in Business Management from the Metropolitan School of Business & Management and hands-on experience, he brings clarity, structure, and confidence to every learning journey.`
+    full: `Augustine Onovroke is a strategic and results-driven professional with over 20 years with a strong background in business analysis, project management, and operations support. He has successfully led initiatives that enhance process efficiency, align strategic goals, and deliver measurable impact across diverse sectors.\nAt IntelliNavix Careers, Augustine leads business analysis and project management training programs designed to equip professionals with practical tools, methodologies, and frameworks for driving change and delivering value. His training approach bridges theory with real-world application, preparing learners to succeed in dynamic and complex work environments.\nAugustine is passionate about fostering a problem-solving mindset and empowering professionals to take ownership of projects from concept to completion. Backed by a formal business management degree in Business Management from the Metropolitan School of Business & Management and hands-on experience, he brings clarity, structure, and confidence to every learning journey.`,
+    linkedin: 'https://www.linkedin.com/in/augustine-onovroke/',
+    twitter: 'https://twitter.com/augustine_onovroke',
+    email: 'mailto:augustine.onovroke@intellinavix.com'
   },
   {
     name: 'Iyanuoluwa Orimolade',
     title: 'Data & Career Strategy Facilitator',
     img: import.meta.env.BASE_URL + 'assets/iyanuoluwa.jpg',
     summary: 'Data & Career Strategy Facilitator with experience guiding early-stage professionals and career changers. Focused on interactive, learner-centered coaching.',
-    full: `Iyanuoluwa Orimolade is a dedicated and empathetic professional with years of experience in client-facing roles, guiding early-stage professionals as well as those transitioning with clarity, confidence, and measurable success. Her client-centered approach emphasizes interactive and learner-focused strategies, empowering individuals to set and achieve meaningful career and personal milestones.\nAs a career strategy facilitator with IntelliNavix Careers, Iyanuoluwa works one-on-one with emerging talent and career changers, delivering structured coaching sessions that build resilience, sharpen goals, and elevate professional competencies. Known for her calm demeanor and genuine positivity, she fosters environments where clients feel supported to grow, pivot, and excel.\nHer extensive experience in professional development includes designing workshops, crafting personalized career roadmaps, and leveraging evidence-based coaching methods to support effective decision-making. With a Master's degree in Geosciences from the University of Aberdeen, she is proficient at helping clients navigate role transitions, build confidence in their expertise, and develop long-term strategies for success.`
+    full: `Iyanuoluwa Orimolade is a dedicated and empathetic professional with years of experience in client-facing roles, guiding early-stage professionals as well as those transitioning with clarity, confidence, and measurable success. Her client-centered approach emphasizes interactive and learner-focused strategies, empowering individuals to set and achieve meaningful career and personal milestones.\nAs a career strategy facilitator with IntelliNavix Careers, Iyanuoluwa works one-on-one with emerging talent and career changers, delivering structured coaching sessions that build resilience, sharpen goals, and elevate professional competencies. Known for her calm demeanor and genuine positivity, she fosters environments where clients feel supported to grow, pivot, and excel.\nHer extensive experience in professional development includes designing workshops, crafting personalized career roadmaps, and leveraging evidence-based coaching methods to support effective decision-making. With a Master's degree in Geosciences from the University of Aberdeen, she is proficient at helping clients navigate role transitions, build confidence in their expertise, and develop long-term strategies for success.`,
+    linkedin: 'https://www.linkedin.com/in/iyanuoluwa-orimolade/',
+    twitter: 'https://x.com/Iyanuorim',
+    email: 'mailto:iyanuorims@gmail.com'
   },
 ];
 
@@ -279,11 +292,11 @@ const About = () => {
               <div className="col-sm-6 col-md-4 col-lg-3" key={member.name}>
                 <div className="team-card h-100 d-flex flex-column align-items-center text-center bg-white shadow rounded-4 p-3" style={{padding: 0}}>
                   <div className="team-img-container position-relative" style={{ width: '100%', height: 260, marginBottom: 0, borderTopLeftRadius: 16, borderTopRightRadius: 16, borderBottomLeftRadius: 0, borderBottomRightRadius: 0, overflow: 'hidden' }}>
-                    <img src={member.img} alt={member.name} className="team-img" style={{ height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'center', borderTopLeftRadius: 16, borderTopRightRadius: 16, borderBottomLeftRadius: 0, borderBottomRightRadius: 0, background: 'transparent' }} />
+                    <img src={member.img} alt={member.name} className="team-img" style={{ height: '320px', width: '100%', objectFit: 'cover', objectPosition: 'center 10%', borderTopLeftRadius: 16, borderTopRightRadius: 16, borderBottomLeftRadius: 0, borderBottomRightRadius: 0, background: 'transparent' }} />
                     <div className="team-overlay team-img-overlay d-flex flex-row align-items-center justify-content-center">
-                      <a href="#" className="team-social-link linkedin" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-                      <a href="#" className="team-social-link twitter" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-                      <a href="mailto:info@intellinavix.com" className="team-social-link email" aria-label="Email"><i className="fas fa-envelope"></i></a>
+                      <a href={member.linkedin} className="team-social-link linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i></a>
+                      <a href={member.twitter} className="team-social-link twitter" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+                      <a href={member.email} className="team-social-link email" aria-label="Email" target="_blank" rel="noopener noreferrer"><i className="fas fa-envelope"></i></a>
                     </div>
                   </div>
                   <div className="p-3 w-100 d-flex flex-column align-items-center">

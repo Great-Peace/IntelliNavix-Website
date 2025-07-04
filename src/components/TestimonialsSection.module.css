@@ -1,5 +1,18 @@
+.scrollContainer {
+  overflow: hidden;
+  width: 100%;
+}
+
 .scrollTrack {
+  display: flex;
+  width: max-content;
   animation: testimonials-scroll 60s linear infinite;
+  gap: 2rem;
+}
+
+.scrollTrack .testimonial-card {
+  min-width: 350px;
+  flex-shrink: 0;
 }
 
 @keyframes testimonials-scroll {
@@ -12,5 +25,25 @@
 }
 
 .scrollContainer:hover .scrollTrack {
+  animation-play-state: paused;
+}
+
+.marqueeTrack {
+  animation-name: scrollLeft;
+  animation-duration: 25s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marqueeTrack:hover {
   animation-play-state: paused;
 } 

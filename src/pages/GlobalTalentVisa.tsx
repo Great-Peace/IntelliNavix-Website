@@ -393,7 +393,7 @@ const GlobalTalentVisa = () => (
               <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0e-_JK0f_TEZq1jDoxrV4zw4xM1wgRp-tWbk9-hnkt0bMehxConeKOfackcmJEoYuM-MauiEe2" className="btn btn-light btn-lg me-0 me-md-3 mb-2 mb-md-0" style={{ color: '#1e3a8a', borderRadius: 8 }} target="_blank" rel="noopener noreferrer">
                 <i className="fas fa-calendar-check me-2"></i>Free Consultation
               </a>
-              <a href="tel:+447873306741" className="btn btn-outline-light btn-lg" style={{ borderRadius: 8 }}>
+              <a href="https://wa.me/447873306741?text=Hello%2C%20I%20am%20interested%20in%20the%20UK%20Global%20Talent%20Visa%20support%20services." className="btn btn-outline-light btn-lg" style={{ borderRadius: 8 }} target="_blank" rel="noopener noreferrer">
                 <i className="fas fa-phone me-2"></i>Send a WhatsApp Message
               </a>
             </div>

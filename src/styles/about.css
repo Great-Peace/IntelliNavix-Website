@@ -722,44 +722,32 @@ body {
     position: relative;
     overflow: hidden;
     background: #f8fafc;
+    padding-top: 0 !important; /* Remove top padding */
 }
 
 .member-image img {
     width: 100%;
     height: 100%;
-    /* PERFECT FIT: Fill entire container without gaps or overflow */
     object-fit: cover;
-    /* SMART POSITIONING: Focus on upper portion where faces are */
-    object-position: center 30%;
+    object-position: center top !important; /* Always show the top of the image */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Ensure images display properly */
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
     display: block !important;
-    /* Remove any borders or spacing */
     border: none;
     margin: 0;
     padding: 0;
-    /* Ensure crisp rendering */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
 
-/* INDIVIDUAL PERFECT POSITIONING for each team member */
-/* Dr. Yakubu - First image (portrait style) */
-.team-member:nth-child(1) .member-image img {
-    object-position: center 25%; /* Perfect for portrait shots */
-}
-
-/* Mr. Anthony Mbata - Second image (outdoor/building background) */
-.team-member:nth-child(2) .member-image img {
-    object-position: center 35%; /* Slightly lower to show more torso */
-}
-
-/* Mrs. Yakubu - Third image (portrait style) */
+.member-image img[src*="portrait"],
+.member-image img[src*="landscape"],
+.team-member:nth-child(1) .member-image img,
+.team-member:nth-child(2) .member-image img,
 .team-member:nth-child(3) .member-image img {
-    object-position: center 25%; /* Same as first for consistency */
+    object-position: center top !important;
 }
 
 .member-overlay {
@@ -917,15 +905,6 @@ body {
     .team-grid {
         gap: 1.5rem;
     }
-}
-
-/* ADVANCED: Fallback for different image orientations */
-.member-image img[src*="portrait"] {
-    object-position: center 20%; /* For portrait images */
-}
-
-.member-image img[src*="landscape"] {
-    object-position: center 40%; /* For landscape images */
 }
 
 /* LOADING STATE: Smooth transition when images load */
