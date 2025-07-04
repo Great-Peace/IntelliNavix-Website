@@ -1,7 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy: React.FC = () => (
   <>
+    <Helmet>
+      <title>IntelliNavix | Privacy Policy</title>
+    </Helmet>
     <section
       className="policy-hero"
       style={{

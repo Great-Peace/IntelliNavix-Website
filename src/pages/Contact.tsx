@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -42,6 +43,9 @@ const Contact = () => {
 
   return (
     <>
+      <Helmet>
+        <title>IntelliNavix | Contact</title>
+      </Helmet>
       {/* Header Section */}
       <div className="container-fluid bg-primary py-5 mb-5 page-header">
         <div className="container py-5">

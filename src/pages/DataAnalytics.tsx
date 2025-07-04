@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StartJourneyModal } from './Home';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 
 const overview = [
   {
@@ -115,6 +116,9 @@ const DataAnalytics = () => {
 
   return (
     <>
+      <Helmet>
+        <title>IntelliNavix | Data Analytics</title>
+      </Helmet>
       <Navbar onDropdownChange={setDropdownOpen} />
       {/* Hero/Intro Section - Framer Motion + Modern Visuals */}
       <section
@@ -156,7 +160,7 @@ const DataAnalytics = () => {
               transition={{ duration: 0.8, type: 'spring', delay: 0.2 }}
             >
               <img
-                src={`${import.meta.env.BASE_URL}assets/chart1.png`}
+                src={`${import.meta.env.BASE_URL}assets/data_anal.jpg`}
                 alt="Analytics Dashboard Illustration"
                 className="img-fluid rounded-4 shadow-lg"
                 style={{ maxWidth: 520, minHeight: 320, background: '#fff', border: '6px solid #e0e7ff' }}

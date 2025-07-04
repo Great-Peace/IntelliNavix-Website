@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 // Define a type for upcoming event objects
 type UpcomingEvent = {
@@ -59,9 +60,9 @@ export const upcomingEvents: UpcomingEvent[] = [
 
 const pastEvents = [
   {
-    title: 'From Data to Insight',
+    title: 'From Data to Insight: Build Dashboards in 90 Minutes',
     image: `${import.meta.env.BASE_URL}/assets/event-poster-1.jpg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    recording: 'https://www.youtube.com/watch?v=qlcvm779UZ4&t=5588s',
   },
   {
     title: 'SQL Workshop',
@@ -79,24 +80,24 @@ const pastEvents = [
     recording: 'https://www.youtube.com/@intellinavixcareers/videos',
   },
   {
-    title: 'Data Visualization',
+    title: 'Mastering Google Analytics for Performance Analysts',
     image: `${import.meta.env.BASE_URL}/assets/event-poster-5.jpeg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    recording: 'https://www.youtube.com/watch?v=-jvEJAuCKhg',
   },
   {
-    title: 'Machine Learning',
+    title: 'Building a Web App with Python, Streamlit, and SQL',
     image: `${import.meta.env.BASE_URL}/assets/event-poster-6.jpeg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    recording: 'https://www.youtube.com/watch?v=f8-bw_MfHZI',
   },
   {
-    title: 'AI Workshop',
+    title: 'IT Project Management: A Journey for New Entrants',
     image: `${import.meta.env.BASE_URL}/assets/event-poster-7.jpeg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    recording: 'https://www.youtube.com/watch?v=u3qya6zWxXw',
   },
   {
-    title: 'Data Science',
+    title: 'Crafting Your IT Career: Recruitment Insights for New Entrants',
     image: `${import.meta.env.BASE_URL}/assets/event-poster-8.jpeg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    recording: 'https://www.youtube.com/watch?v=_fcvtqHjSiQ&t=7s',
   },
 ];
 
@@ -309,138 +310,143 @@ const Events: React.FC = () => {
   }
 
   return (
-    <div style={{ paddingTop: '90px' }}>
-      {/* Hero Section */}
-      <section id="top" className="events-hero-section py-5 text-center bg-primary text-white position-relative animate__animated animate__fadeInDown">
-        <div className="container position-relative z-2">
-          <h1 className="display-4 fw-bold mb-3">Events & Experiences</h1>
-          <p className="lead mb-4">Dive into our world of hands-on workshops, masterclasses, and bootcamps. <br />
-            <span className="fw-semibold">Learn. Network. Transform.</span>
-          </p>
-          <a href="#upcoming" className="btn btn-light btn-lg px-4 me-3">Upcoming Events</a>
-          <a href="#past" className="btn btn-outline-light btn-lg px-4">Past Events</a>
-          <a href="#top" className="visually-hidden" tabIndex={-1} aria-hidden="true"></a>
-        </div>
-        <div className="events-hero-bg position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.08, background: `url(${import.meta.env.BASE_URL}assets/event-poster-1.jpg) center/cover no-repeat` }}></div>
-      </section>
-
-      {/* Upcoming Events */}
-      <section id="upcoming" className="py-5 bg-light">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2 className="section-title font-display">Upcoming <span className="gradient-text">Events</span></h2>
-            <p className="section-subtitle">Reserve your spot and take the next step in your data career journey.</p>
+    <>
+      <Helmet>
+        <title>IntelliNavix | Events</title>
+      </Helmet>
+      <div style={{ paddingTop: '90px' }}>
+        {/* Hero Section */}
+        <section id="top" className="events-hero-section py-5 text-center bg-primary text-white position-relative animate__animated animate__fadeInDown">
+          <div className="container position-relative z-2">
+            <h1 className="display-4 fw-bold mb-3">Events & Experiences</h1>
+            <p className="lead mb-4">Dive into our world of hands-on workshops, masterclasses, and bootcamps. <br />
+              <span className="fw-semibold">Learn. Network. Transform.</span>
+            </p>
+            <a href="#upcoming" className="btn btn-light btn-lg px-4 me-3">Upcoming Events</a>
+            <a href="#past" className="btn btn-outline-light btn-lg px-4">Past Events</a>
+            <a href="#top" className="visually-hidden" tabIndex={-1} aria-hidden="true"></a>
           </div>
-          <div className="row g-4 justify-content-center">
-            {upcomingEvents.map((event, idx) => (
-              <div className={`col-md-6 col-lg-4 animate__animated animate__fadeInUp`} style={{ animationDelay: `${idx * 0.15 + 0.1}s` }} key={idx}>
-                <div className="card h-100 shadow event-card border-0" id={`event-${event.id}`}>
-                  <img src={event.image} className="card-img-top" alt={event.title} style={{ height: 220, objectFit: 'cover' }} />
-                  <div className="card-body d-flex flex-column">
-                    <div className="d-flex align-items-center mb-2">
-                      <span className="badge bg-primary me-2 text-uppercase">{event.type}</span>
-                      <span className="text-muted small ms-auto"><i className="fas fa-map-marker-alt me-1"></i>{event.location}</span>
-                    </div>
-                    <h5 className="card-title fw-bold mb-1">{event.title}</h5>
-                    <div className="mb-2 text-secondary">
-                      <i className="far fa-calendar-alt me-1"></i>{event.date} &nbsp; <i className="far fa-clock me-1"></i>{event.time}
-                    </div>
-                    <p className="mb-2 small text-muted">{event.description}</p>
-                    <ul className="list-unstyled mb-3">
-                      {event.highlights.map((h, i) => (
-                        <li key={i} className="d-flex align-items-center mb-1"><i className="fas fa-check-circle text-success me-2"></i>{h}</li>
-                      ))}
-                    </ul>
-                    <div className="mt-auto d-flex gap-2">
-                      <button className="btn btn-primary btn-sm w-100" onClick={() => setModalEvent(event)}>Register</button>
-                      <button 
-                        className={`btn btn-sm w-100 ${registeredEvents.has(event.id) ? 'btn-outline-secondary' : 'btn-outline-secondary disabled'}`} 
-                        onClick={() => handleAddToCalendar(event)}
-                        disabled={!registeredEvents.has(event.id)}
-                        title={registeredEvents.has(event.id) ? 'Add to Calendar' : 'Register first to add to calendar'}
-                      >
-                        {registeredEvents.has(event.id) ? 'Add to Calendar' : 'Register First'}
-                      </button>
+          <div className="events-hero-bg position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.08, background: `url(${import.meta.env.BASE_URL}assets/event-poster-1.jpg) center/cover no-repeat` }}></div>
+        </section>
+
+        {/* Upcoming Events */}
+        <section id="upcoming" className="py-5 bg-light">
+          <div className="container">
+            <div className="section-header text-center mb-5">
+              <h2 className="section-title font-display">Upcoming <span className="gradient-text">Events</span></h2>
+              <p className="section-subtitle">Reserve your spot and take the next step in your data career journey.</p>
+            </div>
+            <div className="row g-4 justify-content-center">
+              {upcomingEvents.map((event, idx) => (
+                <div className={`col-md-6 col-lg-4 animate__animated animate__fadeInUp`} style={{ animationDelay: `${idx * 0.15 + 0.1}s` }} key={idx}>
+                  <div className="card h-100 shadow event-card border-0" id={`event-${event.id}`}>
+                    <img src={event.image} className="card-img-top" alt={event.title} style={{ height: 220, objectFit: 'cover' }} />
+                    <div className="card-body d-flex flex-column">
+                      <div className="d-flex align-items-center mb-2">
+                        <span className="badge bg-primary me-2 text-uppercase">{event.type}</span>
+                        <span className="text-muted small ms-auto"><i className="fas fa-map-marker-alt me-1"></i>{event.location}</span>
+                      </div>
+                      <h5 className="card-title fw-bold mb-1">{event.title}</h5>
+                      <div className="mb-2 text-secondary">
+                        <i className="far fa-calendar-alt me-1"></i>{event.date} &nbsp; <i className="far fa-clock me-1"></i>{event.time}
+                      </div>
+                      <p className="mb-2 small text-muted">{event.description}</p>
+                      <ul className="list-unstyled mb-3">
+                        {event.highlights.map((h, i) => (
+                          <li key={i} className="d-flex align-items-center mb-1"><i className="fas fa-check-circle text-success me-2"></i>{h}</li>
+                        ))}
+                      </ul>
+                      <div className="mt-auto d-flex gap-2">
+                        <button className="btn btn-primary btn-sm w-100" onClick={() => setModalEvent(event)}>Register</button>
+                        <button 
+                          className={`btn btn-sm w-100 ${registeredEvents.has(event.id) ? 'btn-outline-secondary' : 'btn-outline-secondary disabled'}`} 
+                          onClick={() => handleAddToCalendar(event)}
+                          disabled={!registeredEvents.has(event.id)}
+                          title={registeredEvents.has(event.id) ? 'Add to Calendar' : 'Register first to add to calendar'}
+                        >
+                          {registeredEvents.has(event.id) ? 'Add to Calendar' : 'Register First'}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Registration Modal */}
-      <RegistrationModal show={!!modalEvent} onClose={() => setModalEvent(null)} event={modalEvent || {}} onRegistrationSuccess={(eventId) => setRegisteredEvents(prev => new Set(prev).add(eventId))} />
+        {/* Registration Modal */}
+        <RegistrationModal show={!!modalEvent} onClose={() => setModalEvent(null)} event={modalEvent || {}} onRegistrationSuccess={(eventId) => setRegisteredEvents(prev => new Set(prev).add(eventId))} />
 
-      {/* Event Highlights */}
-      <section className="event-highlights-section py-5 bg-white">
-        <div className="container">
-          <div className="row g-4 justify-content-center">
-            {eventHighlights.map((h, i) => (
-              <div className={`col-6 col-md-3 text-center animate__animated animate__fadeInUp`} style={{ animationDelay: `${i * 0.15 + 0.1}s` }} key={i}>
-                <div className="p-4 shadow-sm rounded bg-light h-100">
-                  <div className="mb-3 fs-1"><i className={h.icon}></i></div>
-                  <h5 className="fw-bold mb-2">{h.title}</h5>
-                  <p className="mb-0 small text-muted">{h.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Past Events */}
-      <section id="past" className="py-5">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2 className="section-title font-display">Past <span className="gradient-text">Events</span></h2>
-            <p className="section-subtitle">Catch up on what you missed. Watch recaps and relive the experience!</p>
-          </div>
-          <div className="row g-4 justify-content-center">
-            {pastEvents.map((event, idx) => (
-              <div className={`col-md-6 col-lg-3 animate__animated animate__fadeInUp`} style={{ animationDelay: `${idx * 0.12 + 0.1}s` }} key={idx}>
-                <div className="card h-100 shadow-sm border-0 past-event-card">
-                  <div className="position-relative">
-                    <img src={event.image} className="card-img-top" alt={event.title} style={{ height: 180, objectFit: 'cover', borderTopLeftRadius: 12, borderTopRightRadius: 12 }} />
-                  </div>
-                  <div className="card-body text-center">
-                    <h6 className="fw-bold mb-1">{event.title}</h6>
-                    <a href={event.recording} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm mt-3">
-                      <i className="fab fa-youtube me-1"></i>Watch Recap
-                    </a>
+        {/* Event Highlights */}
+        <section className="event-highlights-section py-5 bg-white">
+          <div className="container">
+            <div className="row g-4 justify-content-center">
+              {eventHighlights.map((h, i) => (
+                <div className={`col-6 col-md-3 text-center animate__animated animate__fadeInUp`} style={{ animationDelay: `${i * 0.15 + 0.1}s` }} key={i}>
+                  <div className="p-4 shadow-sm rounded bg-light h-100">
+                    <div className="mb-3 fs-1"><i className={h.icon}></i></div>
+                    <h5 className="fw-bold mb-2">{h.title}</h5>
+                    <p className="mb-0 small text-muted">{h.desc}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials */}
-      <section className="testimonials-section py-5 bg-light">
-        <div className="container">
-          <div className="section-header text-center mb-5">
-            <h2 className="section-title font-display">What <span className="gradient-text">Attendees Say</span></h2>
-            <p className="section-subtitle">Real stories from our event participants</p>
-          </div>
-          <div className="row g-4 justify-content-center">
-            {testimonials.map((t, i) => (
-              <div className={`col-md-6 col-lg-3 animate__animated animate__fadeInUp`} style={{ animationDelay: `${i * 0.18 + 0.1}s` }} key={i}>
-                <div className="testimonial-card bg-white shadow-sm rounded p-4 h-100 text-center">
-                  <img src={t.photo} alt={t.name} className="rounded-circle mb-3" style={{ width: 70, height: 70, objectFit: 'cover', border: '3px solid #06b6d4' }} />
-                  <blockquote className="mb-3 text-secondary" style={{ minHeight: 80 }}>
-                    <i className="fas fa-quote-left me-2 text-primary"></i>{t.quote}
-                  </blockquote>
-                  <div className="fw-bold mb-0">{t.name}</div>
-                  <div className="small text-muted">{t.role}</div>
+        {/* Past Events */}
+        <section id="past" className="py-5">
+          <div className="container">
+            <div className="section-header text-center mb-5">
+              <h2 className="section-title font-display">Past <span className="gradient-text">Events</span></h2>
+              <p className="section-subtitle">Catch up on what you missed. Watch recaps and relive the experience!</p>
+            </div>
+            <div className="row g-4 justify-content-center">
+              {pastEvents.map((event, idx) => (
+                <div className={`col-md-6 col-lg-3 animate__animated animate__fadeInUp`} style={{ animationDelay: `${idx * 0.12 + 0.1}s` }} key={idx}>
+                  <div className="card h-100 shadow-sm border-0 past-event-card">
+                    <div className="position-relative">
+                      <img src={event.image} className="card-img-top" alt={event.title} style={{ height: 180, objectFit: 'cover', borderTopLeftRadius: 12, borderTopRightRadius: 12 }} />
+                    </div>
+                    <div className="card-body text-center">
+                      <h6 className="fw-bold mb-1">{event.title}</h6>
+                      <a href={event.recording} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm mt-3">
+                        <i className="fab fa-youtube me-1"></i>Watch Recap
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="testimonials-section py-5 bg-light">
+          <div className="container">
+            <div className="section-header text-center mb-5">
+              <h2 className="section-title font-display">What <span className="gradient-text">Attendees Say</span></h2>
+              <p className="section-subtitle">Real stories from our event participants</p>
+            </div>
+            <div className="row g-4 justify-content-center">
+              {testimonials.map((t, i) => (
+                <div className={`col-md-6 col-lg-3 animate__animated animate__fadeInUp`} style={{ animationDelay: `${i * 0.18 + 0.1}s` }} key={i}>
+                  <div className="testimonial-card bg-white shadow-sm rounded p-4 h-100 text-center">
+                    <img src={t.photo} alt={t.name} className="rounded-circle mb-3" style={{ width: 70, height: 70, objectFit: 'cover', border: '3px solid #06b6d4' }} />
+                    <blockquote className="mb-3 text-secondary" style={{ minHeight: 80 }}>
+                      <i className="fas fa-quote-left me-2 text-primary"></i>{t.quote}
+                    </blockquote>
+                    <div className="fw-bold mb-0">{t.name}</div>
+                    <div className="small text-muted">{t.role}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 

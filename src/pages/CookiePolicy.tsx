@@ -1,7 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const CookiePolicy: React.FC = () => (
   <>
+    <Helmet>
+      <title>IntelliNavix | Cookie Policy</title>
+    </Helmet>
     <section
       className="policy-hero"
       style={{

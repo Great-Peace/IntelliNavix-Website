@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StartJourneyModal } from './Home';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 
 const overview = [
   {
@@ -118,6 +119,9 @@ const ProjectManagement = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   return (
     <>
+      <Helmet>
+        <title>IntelliNavix | Project Management</title>
+      </Helmet>
       <Navbar onDropdownChange={setDropdownOpen} />
       {/* Hero/Intro Section - Modern Gradient, Framer Motion, Floating Icons */}
       <section
@@ -159,7 +163,7 @@ const ProjectManagement = () => {
               transition={{ duration: 0.8, type: 'spring', delay: 0.2 }}
             >
               <img
-                src={`${import.meta.env.BASE_URL}assets/projectmanagement.jpg`}
+                src={`${import.meta.env.BASE_URL}assets/project_manage.jpg`}
                 alt="Project Management Illustration"
                 className="img-fluid rounded-4 shadow-lg"
                 style={{ maxWidth: 520, minHeight: 320, background: '#fff', border: '6px solid #e0f7fa' }}

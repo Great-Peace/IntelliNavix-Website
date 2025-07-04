@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StartJourneyModal } from './Home';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 
 const overview = [
   {
@@ -105,6 +106,9 @@ const AgileScrum = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   return (
     <>
+      <Helmet>
+        <title>IntelliNavix | Agile & Scrum</title>
+      </Helmet>
       <Navbar onDropdownChange={setDropdownOpen} />
       {/* Hero/Intro Section - Modern Gradient, Framer Motion, Floating Icons */}
       <section

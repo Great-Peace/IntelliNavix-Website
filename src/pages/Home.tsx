@@ -6,6 +6,7 @@ import ToolsSection from '../components/ToolsSection';
 import JourneySection from '../components/JourneySection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 
 const eventSlides = [
   { src: `${import.meta.env.BASE_URL}assets/event-poster-1.jpg`, alt: 'From Data to Insight' },
@@ -47,7 +48,7 @@ const courseData = [
       { icon: 'fas fa-project-diagram', label: 'Real Projects' },
     ],
     duration: '8 weeks',
-    price: '£450',
+    price: '£600',
   },
   {
     category: 'management',
@@ -59,7 +60,7 @@ const courseData = [
       { icon: 'fas fa-tools', label: 'PM Tools Training' },
     ],
     duration: '6 weeks',
-    price: '£400',
+    price: '£600',
   },
   {
     category: 'agile',
@@ -71,7 +72,7 @@ const courseData = [
       { icon: 'fas fa-rocket', label: 'Agile Coaching' },
     ],
     duration: '4 weeks',
-    price: '£350',
+    price: '£600',
   },
 ];
 
@@ -284,6 +285,11 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
                   rows={3}
                 />
               </div>
+              <div className="col-12">
+                <div className="alert alert-info text-center" style={{ fontSize: '1.2rem', fontWeight: 600 }}>
+                  Course Price: £600
+                </div>
+              </div>
               <div className="col-12 d-grid">
                 <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>
                   {loading ? 'Submitting...' : 'Start Your Journey'}
@@ -390,6 +396,9 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>IntelliNavix | Home</title>
+      </Helmet>
       {/* Hero Section */}
       <Navbar onDropdownChange={setDropdownOpen} />
       <section
@@ -419,16 +428,10 @@ const Home = () => {
                   <div className="row g-3">
                     <div className="col-4">
                       <div className="stat-mini">
-                        <div className="stat-mini-number">50+</div>
+                        <div className="stat-mini-number">200+</div>
                         <div className="stat-mini-label">Students</div>
                       </div>
-                    </div>
-                    <div className="col-4">
-                      <div className="stat-mini">
-                        <div className="stat-mini-number">95%</div>
-                        <div className="stat-mini-label">Success Rate</div>
-                      </div>
-                    </div>
+                    </div>                    
                     <div className="col-4">
                       <div className="stat-mini">
                         <div className="stat-mini-number">4.9★</div>
@@ -478,6 +481,55 @@ const Home = () => {
             <div className="bg-element element-1"></div>
             <div className="bg-element element-2"></div>
             <div className="bg-element element-3"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Program Features Section */}
+      <section className="program-features-section py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center mb-4">
+            <div className="col-lg-8 text-center">
+              <h2 className="fw-bold mb-3" style={{ letterSpacing: 1.2 }}>Why Choose <span className="gradient-text">IntelliNavix?</span></h2>
+              <p className="lead text-secondary">Our comprehensive program is designed to give you real skills, real experience, and real results.</p>
+            </div>
+          </div>
+          <div className="row g-4 justify-content-center">
+            <div className="col-md-6 col-lg-4 d-flex">
+              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
+                <i className="fas fa-clock fa-2x text-primary mb-3"></i>
+                <h5 className="fw-bold mb-2">10 Weeks Intensive Training</h5>
+                <p className="mb-0">45+ contact hours with expert instructors</p>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 d-flex">
+              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
+                <i className="fas fa-video fa-2x text-success mb-3"></i>
+                <h5 className="fw-bold mb-2">Lifetime Access to Recordings</h5>
+                <p className="mb-0">All sessions are recorded and available anytime</p>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 d-flex">
+              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
+                <i className="fas fa-users fa-2x text-info mb-3"></i>
+                <h5 className="fw-bold mb-2">12 Weeks Practical Project</h5>
+                <p className="mb-0">Collaborative work experience on real projects</p>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 d-flex">
+              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
+                <i className="fas fa-file-alt fa-2x text-warning mb-3"></i>
+                <h5 className="fw-bold mb-2">CV Review & Job Support</h5>
+                <p className="mb-0">Personalized CV review and job application guidance</p>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4 d-flex">
+              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
+                <i className="fas fa-chalkboard-teacher fa-2x text-danger mb-3"></i>
+                <h5 className="fw-bold mb-2">Interview Prep & Mentoring</h5>
+                <p className="mb-0">Ongoing interview preparation and continuous mentoring</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -638,7 +690,7 @@ const Home = () => {
             </div>
             <div className="col-lg-6">
               <div className="video-container">
-                <iframe src="https://www.youtube.com/embed/qlcvm779UZ4" title="IntelliNavix Training Video" frameBorder="0" allowFullScreen style={{ width: '100%', height: 315, borderRadius: 20, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}></iframe>
+                <iframe src="https://www.youtube.com/embed/Kq1-9VeaD6A" title="IntelliNavix Training Video" frameBorder="0" allowFullScreen style={{ width: '100%', height: 315, borderRadius: 20, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}></iframe>
               </div>
             </div>
           </div>
@@ -680,15 +732,11 @@ const Home = () => {
             </p>
             <div className="stats-bar">
               <div className="stat-item">
-                <span className="stat-number">700+</span>
+                <span className="stat-number">200+</span>
                 <span className="stat-label">Students Trained</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">95%</span>
-                <span className="stat-label">Job Placement Rate</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">4.8/5</span>
+                <span className="stat-number">4.9/5</span>
                 <span className="stat-label">Average Rating</span>
               </div>
             </div>

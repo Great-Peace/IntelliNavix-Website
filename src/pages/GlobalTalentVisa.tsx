@@ -1,7 +1,11 @@
 import Navbar from '../components/Navbar';
+import { Helmet } from 'react-helmet-async';
 
 const GlobalTalentVisa = () => (
   <>
+    <Helmet>
+      <title>IntelliNavix | Global Talent Visa</title>
+    </Helmet>
     <Navbar />
     {/* Hero Section */}
     <section className="hero" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)', color: 'white', minHeight: '100vh' }}>

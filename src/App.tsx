@@ -18,28 +18,31 @@ import CookiePolicy from './pages/CookiePolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import './App.css';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/agile-scrum" element={<AgileScrum />} />
-        <Route path="/courses/business-analysis" element={<BusinessAnalysis />} />
-        <Route path="/courses/data-analytics" element={<DataAnalytics />} />
-        <Route path="/courses/project-management" element={<ProjectManagement />} />
-        <Route path="/global-talent-visa" element={<GlobalTalentVisa />} />
-        <Route path="/cookie-policy" element={<CookiePolicy />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <HelmetProvider>
+      <Router basename={import.meta.env.BASE_URL}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/agile-scrum" element={<AgileScrum />} />
+          <Route path="/courses/business-analysis" element={<BusinessAnalysis />} />
+          <Route path="/courses/data-analytics" element={<DataAnalytics />} />
+          <Route path="/courses/project-management" element={<ProjectManagement />} />
+          <Route path="/global-talent-visa" element={<GlobalTalentVisa />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </HelmetProvider>
   );
 }
 

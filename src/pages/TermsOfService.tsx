@@ -1,7 +1,11 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const TermsOfService: React.FC = () => (
   <>
+    <Helmet>
+      <title>IntelliNavix | Terms of Service</title>
+    </Helmet>
     <section
       className="policy-hero"
       style={{
