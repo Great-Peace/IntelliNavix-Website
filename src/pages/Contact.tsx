@@ -47,15 +47,21 @@ const Contact = () => {
         <title>IntelliNavix | Contact</title>
       </Helmet>
       {/* Header Section */}
-      <div className="container-fluid bg-primary py-5 mb-5 page-header">
-        <div className="container py-5">
-          <div className="row justify-content-center">
-            <div className="col-lg-10 text-center">
-              <h1 className="display-3 text-white">Contact</h1>
+      <section className="contact-hero-section d-flex align-items-center justify-content-center position-relative" style={{ minHeight: '38vh', background: 'linear-gradient(120deg, #2563eb 0%, #38bdf8 100%)', overflow: 'hidden', paddingTop: '80px', marginBottom: '2rem' }}>
+        <div className="container position-relative z-2">
+          <div className="row justify-content-center align-items-center">
+            <div className="col-lg-8 text-center">
+              <div style={{ fontSize: '3.5rem', color: '#fff', marginBottom: '1rem' }}>
+                <i className="fas fa-envelope-open-text"></i>
+              </div>
+              <h1 className="display-4 fw-bold text-white mb-3">Contact Us</h1>
+              <p className="lead text-white-50 mb-0" style={{ color: '#e0e7ef' }}>
+                We'd love to hear from you! Reach out for questions, partnership, or support—our team will respond promptly.
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Contact Section */}
       <div className="container-xxl py-5">

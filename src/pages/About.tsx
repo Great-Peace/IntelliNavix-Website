@@ -91,7 +91,7 @@ const teamMembers = [
     full: `Iyanuoluwa Orimolade is a dedicated and empathetic professional with years of experience in client-facing roles, guiding early-stage professionals as well as those transitioning with clarity, confidence, and measurable success. Her client-centered approach emphasizes interactive and learner-focused strategies, empowering individuals to set and achieve meaningful career and personal milestones.\nAs a career strategy facilitator with IntelliNavix Careers, Iyanuoluwa works one-on-one with emerging talent and career changers, delivering structured coaching sessions that build resilience, sharpen goals, and elevate professional competencies. Known for her calm demeanor and genuine positivity, she fosters environments where clients feel supported to grow, pivot, and excel.\nHer extensive experience in professional development includes designing workshops, crafting personalized career roadmaps, and leveraging evidence-based coaching methods to support effective decision-making. With a Master's degree in Geosciences from the University of Aberdeen, she is proficient at helping clients navigate role transitions, build confidence in their expertise, and develop long-term strategies for success.`,
     linkedin: 'https://www.linkedin.com/in/iyanuoluwa-orimolade/',
     twitter: 'https://x.com/Iyanuorim',
-    email: 'mailto:iyanuorims@gmail.com'
+    email: 'mailto:iyanu.orimolade@intellinavix.com'
   },
 ];
 
@@ -103,7 +103,7 @@ const About = () => {
         <title>IntelliNavix | About</title>
       </Helmet>
       {/* Modern Hero Section */}
-      <section className="about-hero-section position-relative d-flex align-items-center" style={{ minHeight: '90vh', background: 'linear-gradient(120deg, #1e293b 0%, #233a5a 100%)', overflow: 'hidden', paddingTop: '80px' }}>
+      <section className="about-hero-section position-relative d-flex align-items-center" style={{ minHeight: '80vh', background: 'linear-gradient(120deg, #1e293b 0%, #233a5a 100%)', overflow: 'hidden', paddingTop: '80px' }}>
         {/* Starry/constellation SVG background */}
         <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
           <circle cx="15%" cy="25%" r="120" fill="#3b82f6" fillOpacity="0.10" />
@@ -119,7 +119,7 @@ const About = () => {
           <line x1="30%" y1="80%" x2="50%" y2="90%" stroke="#7b8cff" strokeWidth="0.5" opacity="0.3" />
         </svg>
         <div className="container position-relative" style={{ zIndex: 2 }}>
-          <div className="row align-items-center" style={{ minHeight: '70vh' }}>
+          <div className="row align-items-center" style={{ minHeight: '60vh' }}>
             {/* Left: Headline, subtitle, buttons */}
             <div className="col-lg-7 d-flex flex-column justify-content-center align-items-start" style={{ minHeight: '400px' }}>
               <div>
@@ -144,26 +144,23 @@ const About = () => {
                 </div>
               </div>
             </div>
-            {/* Right: Metrics Circle */}
+            {/* Right: Hero Image */}
             <div className="col-lg-5 d-flex flex-column justify-content-center align-items-end text-end mt-5 mt-lg-0">
-              <div
-                className="metrics-circle d-flex flex-column justify-content-center align-items-center"
+              <img
+                src={import.meta.env.BASE_URL + 'assets/about_us.png'}
+                alt="About IntelliNavix"
                 style={{
                   width: 320,
                   height: 320,
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle at 60% 40%, #233a5a 70%, #3ecbff 100%)',
+                  objectFit: 'cover',
                   boxShadow: '0 0 64px 0 #3ecbff44, 0 4px 32px #1e293b',
-                  position: 'relative',
-                  marginRight: 0,
-                  marginLeft: 'auto',
-                  padding: '2.5rem 1.5rem',
                   maxWidth: '90vw',
                   minWidth: 220,
+                  background: '#f5f6fa',
+                  border: '6px solid #fff',
                 }}
-              >
-                
-              </div>
+              />
             </div>
           </div>
         </div>
@@ -231,49 +228,49 @@ const About = () => {
             <div className="col-md-6 col-lg-3">
               <motion.div
                 className="feature-card shadow rounded p-4 text-center h-100"
-                style={{ background: '#232b3e', color: '#fff', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
+                style={{ background: '#f8fafc', color: '#1e293b', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
                 whileHover={{ scale: 1.05, boxShadow: '0 8px 32px rgba(62,203,255,0.18)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="feature-icon mb-3 text-primary fs-1"><i className="fas fa-brain"></i></div>
-                <h4 className="fw-bold mb-2" style={{ color: '#fff' }}>Expert Instructors</h4>
-                <p className="mb-0" style={{ color: '#e0e7ef' }}>Learn from industry veterans with decades of hands-on experience in data analytics, business analysis, cloud technologies, and project management. Gain real-world insights and emerging trends knowledge.</p>
+                <h4 className="fw-bold mb-2" style={{ color: '#1e293b' }}>Expert Instructors</h4>
+                <p className="mb-0" style={{ color: '#334155' }}>Learn from industry veterans with decades of hands-on experience in data science, data analytics, data modelling, business analysis, cloud technologies, and project management spanning across the energy, academia, financial and government sector. Our instructor-led trainings last for 10 weeks and recorded with trainees given life-time access to the recordings.</p>
               </motion.div>
             </div>
             <div className="col-md-6 col-lg-3">
               <motion.div
                 className="feature-card shadow rounded p-4 text-center h-100"
-                style={{ background: '#232b3e', color: '#fff', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
+                style={{ background: '#f8fafc', color: '#1e293b', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
                 whileHover={{ scale: 1.05, boxShadow: '0 8px 32px rgba(62,203,255,0.18)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="feature-icon mb-3 text-success fs-1"><i className="fas fa-project-diagram"></i></div>
-                <h4 className="fw-bold mb-2" style={{ color: '#fff' }}>Hands-on Experience</h4>
-                <p className="mb-0" style={{ color: '#e0e7ef' }}>Master practical skills through real-world projects and simulations. Our experiential approach builds confidence and prepares you for actual workplace challenges in the ICT industry.</p>
+                <h4 className="fw-bold mb-2" style={{ color: '#1e293b' }}>Hands-on Experience</h4>
+                <p className="mb-0" style={{ color: '#334155' }}>All our instructors work actively across these sectors and always bring our work experience to enhance our training deliveries. You will have 12 weeks practical project time to master relevant skills through real-world projects and simulations building needed confidence and competence to prepare you for actual workplace challenges in the any industry.</p>
               </motion.div>
             </div>
             <div className="col-md-6 col-lg-3">
               <motion.div
                 className="feature-card shadow rounded p-4 text-center h-100"
-                style={{ background: '#232b3e', color: '#fff', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
+                style={{ background: '#f8fafc', color: '#1e293b', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
                 whileHover={{ scale: 1.05, boxShadow: '0 8px 32px rgba(62,203,255,0.18)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="feature-icon mb-3 text-warning fs-1"><i className="fas fa-users-cog"></i></div>
-                <h4 className="fw-bold mb-2" style={{ color: '#fff' }}>Personalized Coaching</h4>
-                <p className="mb-0" style={{ color: '#e0e7ef' }}>Receive tailored guidance and one-on-one mentoring throughout your journey. Our personalized approach ensures you reach your full potential with customized learning experiences.</p>
+                <h4 className="fw-bold mb-2" style={{ color: '#1e293b' }}>Personalized Coaching</h4>
+                <p className="mb-0" style={{ color: '#334155' }}>You will receive tailored guidance and one-on-one mentoring throughout your journey. We work with you to leverage on your experience and academic degrees in charting the course for your career direction. Our personalized approach ensures you reach your full potential with customized learning experiences.</p>
               </motion.div>
             </div>
             <div className="col-md-6 col-lg-3">
               <motion.div
                 className="feature-card shadow rounded p-4 text-center h-100"
-                style={{ background: '#232b3e', color: '#fff', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
+                style={{ background: '#f8fafc', color: '#1e293b', cursor: 'pointer', boxShadow: '0 4px 24px rgba(35,58,94,0.10)' }}
                 whileHover={{ scale: 1.05, boxShadow: '0 8px 32px rgba(62,203,255,0.18)' }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="feature-icon mb-3 text-info fs-1"><i className="fas fa-handshake"></i></div>
-                <h4 className="fw-bold mb-2" style={{ color: '#fff' }}>Interview Support</h4>
-                <p className="mb-0" style={{ color: '#e0e7ef' }}>Comprehensive career support including CV guidance, interview preparation, and mock interviews. We equip you with the confidence to secure your dream role in the competitive ICT market.</p>
+                <h4 className="fw-bold mb-2" style={{ color: '#1e293b' }}>Interview Support</h4>
+                <p className="mb-0" style={{ color: '#334155' }}>We run sessions on job applications, and interview readiness. Our comprehensive career support including CV guidance, interview preparation, and mock interviews. We equip you with the confidence to secure your dream role in the competitive job market.</p>
               </motion.div>
             </div>
           </div>

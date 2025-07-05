@@ -418,10 +418,16 @@ const Home = () => {
         }}
       >
         <div className="container position-relative" style={{ paddingTop: '0' }}>
-          <div className="row align-items-center min-vh-100 flex-wrap" style={{ minHeight: '55vh', gap: '2rem 0' }}>
+          <div
+            className="row align-items-center flex-wrap"
+            style={{
+              minHeight: window.innerWidth > 575 ? '35vh' : 'auto',
+              gap: window.innerWidth > 575 ? '2rem 0' : '1rem 0',
+            }}
+          >
             <div className="col-lg-6">
               <div className="hero-content text-start">
-                <h1 className="hero-title font-display" style={{ fontSize: '4.2rem', lineHeight: 1.08, textAlign: 'left' }}>
+                <h1 className="hero-title font-display" style={{ fontSize: window.innerWidth > 575 ? '4.2rem' : '2rem', lineHeight: 1.08, textAlign: 'left' }}>
                   Transform Your <span className="gradient-text">Career</span> with Data
                 </h1>
                 <p className="hero-subtitle" style={{ textAlign: 'left' }}>
@@ -456,8 +462,30 @@ const Home = () => {
             </div>
             <div className="col-lg-6 position-relative d-flex align-items-stretch">
               <div className="hero-visual w-100 d-flex align-items-stretch">
-                <div className="hero-image-container w-100 h-100 mx-auto" style={{ maxWidth: '640px', minHeight: '420px', height: '100%' }}>
-                  <img src={`${import.meta.env.BASE_URL}assets/empower_business.png`} alt="Data Analytics Dashboard" className="hero-image" style={{ width: '100%', height: 'auto', maxWidth: '640px', minWidth: '420px', minHeight: '420px', objectFit: 'cover', boxShadow: '0 8px 32px rgba(60,60,180,0.10)', borderRadius: '24px' }} />
+                <div
+                  className="hero-image-container w-100 h-100 mx-auto"
+                  style={{
+                    maxWidth: window.innerWidth > 575 ? '540px' : '100vw',
+                    minWidth: window.innerWidth > 575 ? '320px' : '0',
+                    minHeight: window.innerWidth > 575 ? '280px' : '0',
+                    height: '100%',
+                  }}
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}assets/empower_business.png`}
+                    alt="Data Analytics Dashboard"
+                    className="hero-image"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: window.innerWidth > 575 ? '540px' : '100vw',
+                      minWidth: window.innerWidth > 575 ? '320px' : '0',
+                      minHeight: window.innerWidth > 575 ? '280px' : '0',
+                      objectFit: 'cover',
+                      boxShadow: '0 8px 32px rgba(60,60,180,0.10)',
+                      borderRadius: '24px',
+                    }}
+                  />
                   {/* Floating Elements - move closer to image */}
                   <div className="floating-card card-1" style={{ top: '18px', left: '18px', transform: 'translate(0, 0)', zIndex: 2 }}>
                     <div className="mini-chart">
@@ -485,55 +513,6 @@ const Home = () => {
             <div className="bg-element element-1"></div>
             <div className="bg-element element-2"></div>
             <div className="bg-element element-3"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Program Features Section */}
-      <section className="program-features-section py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center mb-4">
-            <div className="col-lg-8 text-center">
-              <h2 className="fw-bold mb-3" style={{ letterSpacing: 1.2 }}>Why Choose <span className="gradient-text">IntelliNavix?</span></h2>
-              <p className="lead text-secondary">Our comprehensive program is designed to give you real skills, real experience, and real results.</p>
-            </div>
-          </div>
-          <div className="row g-4 justify-content-center">
-            <div className="col-md-6 col-lg-4 d-flex">
-              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
-                <i className="fas fa-clock fa-2x text-primary mb-3"></i>
-                <h5 className="fw-bold mb-2">10 Weeks Intensive Training</h5>
-                <p className="mb-0">45+ contact hours with expert instructors</p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4 d-flex">
-              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
-                <i className="fas fa-video fa-2x text-success mb-3"></i>
-                <h5 className="fw-bold mb-2">Lifetime Access to Recordings</h5>
-                <p className="mb-0">All sessions are recorded and available anytime</p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4 d-flex">
-              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
-                <i className="fas fa-users fa-2x text-info mb-3"></i>
-                <h5 className="fw-bold mb-2">12 Weeks Practical Project</h5>
-                <p className="mb-0">Collaborative work experience on real projects</p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4 d-flex">
-              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
-                <i className="fas fa-file-alt fa-2x text-warning mb-3"></i>
-                <h5 className="fw-bold mb-2">CV Review & Job Support</h5>
-                <p className="mb-0">Personalized CV review and job application guidance</p>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4 d-flex">
-              <div className="feature-card p-4 bg-white rounded-4 shadow-sm w-100 h-100 text-center">
-                <i className="fas fa-chalkboard-teacher fa-2x text-danger mb-3"></i>
-                <h5 className="fw-bold mb-2">Interview Prep & Mentoring</h5>
-                <p className="mb-0">Ongoing interview preparation and continuous mentoring</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

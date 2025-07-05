@@ -19,12 +19,14 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import './App.css';
 import { HelmetProvider } from 'react-helmet-async';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <HelmetProvider>
       <Router basename={import.meta.env.BASE_URL}>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

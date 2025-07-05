@@ -3651,3 +3651,41 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 /* --- END HERO SECTION MOBILE IMPROVEMENTS --- */
+
+@media (max-width: 575px) {
+  .hero {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 1.5rem 0 1rem !important;
+  }
+  .hero .container {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1rem !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  .hero-content {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .hero-image-container {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-width: 95vw !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}

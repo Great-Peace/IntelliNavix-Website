@@ -65,19 +65,19 @@ const pastEvents = [
     recording: 'https://www.youtube.com/watch?v=qlcvm779UZ4&t=5588s',
   },
   {
-    title: 'SQL Workshop',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-2.jpg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    title: 'Data Analysis Demystified for Aspiring Analysts',
+    image: `${import.meta.env.BASE_URL}/assets/data_demystified.jpeg`,
+    recording: 'https://www.youtube.com/watch?v=QKNQwXJfpVA',
   },
   {
-    title: 'Business Analysis',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-3.jpeg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    title: 'Business Analysis: A Launchpad for Aspiring Analysts',
+    image: `${import.meta.env.BASE_URL}/assets/business_launchpad.jpeg`,
+    recording: 'https://www.youtube.com/watch?v=oRPFF5eQ7lA',
   },
   {
-    title: 'Advanced Analytics',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-4.jpeg`,
-    recording: 'https://www.youtube.com/@intellinavixcareers/videos',
+    title: 'Data Analytics Masterclass',
+    image: `${import.meta.env.BASE_URL}/assets/data_masterclass.jpeg`,
+    recording: 'https://www.youtube.com/watch?v=YynckLbkXLQ',
   },
   {
     title: 'Mastering Google Analytics for Performance Analysts',
@@ -105,25 +105,25 @@ const testimonials = [
   {
     name: 'Sarah O.',
     role: 'Data Analyst, London',
-    photo: `${import.meta.env.BASE_URL}/assets/team-1.jpg`,
+    photo: `${import.meta.env.BASE_URL}/assets/avatar_2.jpg`,
     quote: 'The SQL Workshop was a game-changer for my career. The hands-on approach and expert guidance made all the difference!'
   },
   {
     name: 'James T.',
     role: 'Business Consultant, Manchester',
-    photo: `${import.meta.env.BASE_URL}/assets/team-2.jpg`,
+    photo: `${import.meta.env.BASE_URL}/assets/avatar_1.jpg`,
     quote: 'The Business Analysis Masterclass gave me practical tools I use every day. Highly recommended!'
   },
   {
     name: 'Aisha B.',
     role: 'Project Manager, Birmingham',
-    photo: `${import.meta.env.BASE_URL}/assets/team-3.jpg`,
+    photo: `${import.meta.env.BASE_URL}/assets/avatar_3.jpg`,
     quote: 'The Project Management Bootcamp was intense and rewarding. I left with new skills and a great network.'
   },
   {
     name: 'Samuel K.',
     role: 'Graduate, Glasgow',
-    photo: `${import.meta.env.BASE_URL}/assets/team-4.jpg`,
+    photo: `${import.meta.env.BASE_URL}/assets/avatar_5.jpg`,
     quote: 'IntelliNavix events are always inspiring and practical. I keep coming back for more!'
   },
 ];
@@ -326,7 +326,11 @@ const Events: React.FC = () => {
             <a href="#past" className="btn btn-outline-light btn-lg px-4">Past Events</a>
             <a href="#top" className="visually-hidden" tabIndex={-1} aria-hidden="true"></a>
           </div>
-          <div className="events-hero-bg position-absolute top-0 start-0 w-100 h-100" style={{ opacity: 0.08, background: `url(${import.meta.env.BASE_URL}assets/event-poster-1.jpg) center/cover no-repeat` }}></div>
+          <div className="events-hero-bg position-absolute top-0 start-0 w-100 h-100"
+            style={{
+              opacity: 1,
+              background: `linear-gradient(135deg, rgba(99,102,241,0.7) 0%, rgba(139,92,246,0.7) 50%, rgba(6,182,212,0.7) 100%), url(/assets/about_us.png) center/cover no-repeat`
+            }}></div>
         </section>
 
         {/* Upcoming Events */}
@@ -405,15 +409,17 @@ const Events: React.FC = () => {
             <div className="row g-4 justify-content-center">
               {pastEvents.map((event, idx) => (
                 <div className={`col-md-6 col-lg-3 animate__animated animate__fadeInUp`} style={{ animationDelay: `${idx * 0.12 + 0.1}s` }} key={idx}>
-                  <div className="card h-100 shadow-sm border-0 past-event-card">
-                    <div className="position-relative">
-                      <img src={event.image} className="card-img-top" alt={event.title} style={{ height: 180, objectFit: 'cover', borderTopLeftRadius: 12, borderTopRightRadius: 12 }} />
+                  <div className="card h-100 shadow-sm border-0 past-event-card d-flex flex-column" style={{paddingTop: 0, marginTop: 0, width: '100%'}}>
+                    <div className="position-relative" style={{padding: 0, margin: 0, width: '100%'}}>
+                      <img src={event.image} className="card-img-top" alt={event.title} style={{ width: '100%', height: 220, objectFit: 'contain', display: 'block', borderRadius: 0, margin: 0, padding: 0, background: '#fff', boxSizing: 'border-box' }} />
                     </div>
-                    <div className="card-body text-center">
+                    <div className="card-body text-center d-flex flex-column justify-content-between">
                       <h6 className="fw-bold mb-1">{event.title}</h6>
-                      <a href={event.recording} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm mt-3">
-                        <i className="fab fa-youtube me-1"></i>Watch Recap
-                      </a>
+                      <div className="d-flex justify-content-center align-items-center mt-3" style={{ minHeight: 38 }}>
+                        <a href={event.recording} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm w-100" style={{maxWidth: '180px'}}>
+                          <i className="fab fa-youtube me-1"></i>Watch Recap
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
