@@ -56,7 +56,7 @@ const teamMembers = [
   {
     name: 'Anthony Mbata',
     title: 'Principal Data Analysis Trainer at IntelliNavix Limited',
-    img: import.meta.env.BASE_URL + 'assets/tony.png',
+    img: import.meta.env.BASE_URL + 'assets/Tony.jpeg',
     summary: 'Principal Data Analysis Trainer specializing in SQL, Python, and Excel for data professionals. 19+ years of IT and data experience across multiple industries.',
     full: `Anthony Mbata is a Principal Data Analysis Trainer at IntelliNavix Limited, specialising in SQL training, Python for data analysis, and Excel for data professionals. He holds a Master's degree in Data Science and is currently pursuing a PhD in Data Engineering. With over 19 years of extensive IT and data-related experience.\nAnthony has worked across multiple industries, including oil and gas, financial services, artificial intelligence, and energy. Anthony offers customised, flexible online training sessions designed to help professionals and career changers develop practical skills in data analysis, data manipulation, and data visualisation using tools like SQL, Python, and Excel. His training focuses on real-world applications to prepare learners for successful careers in data analysis, data science, data engineering, and analytics roles.\nIn addition to technical training, Anthony provides expert career guidance, CV reviews, interview preparation, and confidence-building coaching to support learners in transitioning into data roles and thriving in the competitive data industry.`,
     linkedin: 'https://www.linkedin.com/in/anthony-mbata/',
@@ -88,7 +88,9 @@ const teamMembers = [
     title: 'Data & Career Strategy Facilitator',
     img: import.meta.env.BASE_URL + 'assets/iyanuoluwa.jpg',
     summary: 'Data & Career Strategy Facilitator with experience guiding early-stage professionals and career changers. Focused on interactive, learner-centered coaching.',
-    full: `Iyanuoluwa Orimolade is a dedicated and empathetic professional with years of experience in client-facing roles, guiding early-stage professionals as well as those transitioning with clarity, confidence, and measurable success. Her client-centered approach emphasizes interactive and learner-focused strategies, empowering individuals to set and achieve meaningful career and personal milestones.\nAs a career strategy facilitator with IntelliNavix Careers, Iyanuoluwa works one-on-one with emerging talent and career changers, delivering structured coaching sessions that build resilience, sharpen goals, and elevate professional competencies. Known for her calm demeanor and genuine positivity, she fosters environments where clients feel supported to grow, pivot, and excel.\nHer extensive experience in professional development includes designing workshops, crafting personalized career roadmaps, and leveraging evidence-based coaching methods to support effective decision-making. With a Master's degree in Geosciences from the University of Aberdeen, she is proficient at helping clients navigate role transitions, build confidence in their expertise, and develop long-term strategies for success.`,
+    full: `Iyanuoluwa Orimolade is a dedicated and empathetic professional with years of experience helping people grow in their careers. She supports early-career professionals and those changing careers by giving them clear guidance and helping them build confidence. Her style is friendly and focused on each person's needs, making it easier for them to reach their goals.
+At IntelliNavix Careers, Iyanuoluwa works one-on-one with clients. She runs coaching sessions that help people set goals, handle challenges, and improve their skills. She is known for being calm and positive, creating a space where clients feel comfortable to learn and grow.
+Iyanuoluwa also designs workshops and creates career plans tailored to each person. She uses proven methods to help clients make good decisions about their careers. She has a Master's degree in Geosciences from the University of Aberdeen and is very good at guiding people through career changes, helping them feel confident and plan for long-term success.`,
     linkedin: 'https://www.linkedin.com/in/iyanuoluwa-orimolade/',
     twitter: 'https://x.com/Iyanuorim',
     email: 'mailto:iyanu.orimolade@intellinavix.com'
@@ -102,8 +104,10 @@ const About = () => {
       <Helmet>
         <title>IntelliNavix | About</title>
       </Helmet>
+      {/* Spacer to offset fixed navbar on all screens */}
+      <div className="navbar-spacer" />
       {/* Modern Hero Section */}
-      <section className="about-hero-section position-relative d-flex align-items-center" style={{ minHeight: '80vh', background: 'linear-gradient(120deg, #1e293b 0%, #233a5a 100%)', overflow: 'hidden', paddingTop: '80px' }}>
+      <section className="about-hero-section position-relative d-flex align-items-center" style={{ minHeight: '80vh', background: 'linear-gradient(120deg, #1e293b 0%, #233a5a 100%)', overflow: 'hidden', paddingTop: window.innerWidth <= 575 ? '70px' : '80px' }}>
         {/* Starry/constellation SVG background */}
         <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
           <circle cx="15%" cy="25%" r="120" fill="#3b82f6" fillOpacity="0.10" />

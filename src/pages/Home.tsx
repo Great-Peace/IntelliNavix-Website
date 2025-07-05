@@ -405,16 +405,18 @@ const Home = () => {
       </Helmet>
       {/* Hero Section */}
       <Navbar onDropdownChange={setDropdownOpen} />
+      {/* Spacer to offset fixed navbar on mobile */}
+      <div className="navbar-spacer" />
       <section
         className="hero"
         id="home"
         style={{
           marginTop: 0,
-          paddingTop: dropdownOpen ? 120 : '0.75rem',
           padding: '0 0 0 0',
           background: 'white',
           position: 'relative',
           transition: 'padding-top 0.3s cubic-bezier(0.4,0,0.2,1)',
+          paddingTop: window.innerWidth <= 575 ? '0' : (dropdownOpen ? 120 : '0.75rem'),
         }}
       >
         <div className="container position-relative" style={{ paddingTop: '0' }}>
@@ -427,7 +429,7 @@ const Home = () => {
           >
             <div className="col-lg-6">
               <div className="hero-content text-start">
-                <h1 className="hero-title font-display" style={{ fontSize: window.innerWidth > 575 ? '4.2rem' : '2rem', lineHeight: 1.08, textAlign: 'left' }}>
+                <h1 className="hero-title font-display" style={{ fontSize: window.innerWidth > 575 ? '4.2rem' : '2.4rem', lineHeight: 1.08, textAlign: 'left', fontWeight: window.innerWidth > 575 ? 800 : 900 }}>
                   Transform Your <span className="gradient-text">Career</span> with Data
                 </h1>
                 <p className="hero-subtitle" style={{ textAlign: 'left' }}>
@@ -435,15 +437,17 @@ const Home = () => {
                 </p>
                 {/* Metrics moved up for visibility */}
                 <div className="hero-stats mt-3 mb-4">
-                  <div className="row g-3">
-                    <div className="col-4">
-                      <div className="stat-mini">
+                  <div className={window.innerWidth <= 991 ? "d-flex flex-column align-items-center gap-2" : "row g-3"}>
+                    <div className={window.innerWidth <= 991 ? "w-100" : "col-4"}
+                      style={window.innerWidth <= 575 ? { maxWidth: '320px', margin: '0 auto' } : {}}>
+                      <div className="stat-mini text-center">
                         <div className="stat-mini-number">200+</div>
                         <div className="stat-mini-label">Students</div>
                       </div>
-                    </div>                    
-                    <div className="col-4">
-                      <div className="stat-mini">
+                    </div>
+                    <div className={window.innerWidth <= 991 ? "w-100" : "col-4"}
+                      style={window.innerWidth <= 575 ? { maxWidth: '320px', margin: '0 auto' } : {}}>
+                      <div className="stat-mini text-center">
                         <div className="stat-mini-number">4.9★</div>
                         <div className="stat-mini-label">Rating</div>
                       </div>

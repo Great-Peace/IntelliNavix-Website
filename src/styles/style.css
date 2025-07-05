@@ -3689,3 +3689,37 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center !important;
   }
 }
+
+/* Navbar spacer for mobile to offset fixed navbar */
+.navbar-spacer {
+  height: 0;
+  width: 100%;
+  display: block;
+}
+@media (max-width: 575px) {
+  .navbar-spacer {
+    height: 70px;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero-title {
+    font-weight: 900 !important;
+    font-size: 2.4rem !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-title {
+    font-weight: 900 !important;
+    font-size: 2.8rem !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-spacer {
+    height: 90px;
+  }
+}
