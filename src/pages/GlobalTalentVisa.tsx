@@ -8,9 +8,9 @@ const GlobalTalentVisa = () => (
     </Helmet>
     <Navbar />
     {/* Hero Section */}
-    <section className="hero" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)', color: 'white', minHeight: '100vh' }}>
+    <section className="hero" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)', color: 'white', minHeight: '60vh' }}>
       <div className="container">
-        <div className="row align-items-center min-vh-100">
+        <div className="row align-items-center">
           <div className="col-lg-6">
             <div className="hero-content">
               <div className="hero-badge mb-4">
