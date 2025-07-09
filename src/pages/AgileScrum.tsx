@@ -150,7 +150,7 @@ const AgileScrum = () => {
               transition={{ duration: 0.8, type: 'spring', delay: 0.2 }}
             >
               <img
-                src={`${import.meta.env.BASE_URL}/assets/agilescrum.png`}
+                src={import.meta.env.BASE_URL + 'assets/agilescrum.png'}
                 alt="Agile Scrum Illustration"
                 className="img-fluid rounded-4 shadow-lg"
                 style={{ maxWidth: 520, minHeight: 320, background: '#fff', border: '6px solid #e0f2f1' }}
@@ -165,9 +165,9 @@ const AgileScrum = () => {
           animate={{ opacity: 0.12 }}
           style={{ zIndex: 1, pointerEvents: 'none' }}
         >
-          <img src="/assets/agilescrum.png" alt="Agile Icon" style={{ position: 'absolute', top: 40, left: 60, width: 70, opacity: 0.7 }} />
-          <img src="/assets/project.png" alt="Project Icon" style={{ position: 'absolute', bottom: 60, right: 80, width: 70, opacity: 0.7 }} />
-          <img src="/assets/figma.png" alt="Figma Icon" style={{ position: 'absolute', top: 120, right: 120, width: 60, opacity: 0.7 }} />
+          <img src={import.meta.env.BASE_URL + 'assets/agilescrum.png'} alt="Agile Icon" style={{ position: 'absolute', top: 40, left: 60, width: 70, opacity: 0.7 }} />
+          <img src={import.meta.env.BASE_URL + 'assets/project.png'} alt="Project Icon" style={{ position: 'absolute', bottom: 60, right: 80, width: 70, opacity: 0.7 }} />
+          <img src={import.meta.env.BASE_URL + 'assets/figma.png'} alt="Figma Icon" style={{ position: 'absolute', top: 120, right: 120, width: 60, opacity: 0.7 }} />
         </motion.div>
       </section>
 

@@ -1,16 +1,11 @@
-import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
 
 const Contact = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,10 +17,10 @@ const Contact = () => {
     setSuccess('');
     setError('');
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwGMIRLBXE5M1UiBdgfzDNEFNgLtgIrRZq4Y4fOuPfX1qsh4rIsmNld-QX0WVo04kXLlQ/exec', {
+      const response = await fetch('/submit_contact.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(form).toString(),
       });
       const data = await response.json();
       if (data.result === 'success') {
@@ -146,9 +141,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="col-12">
-                    <button className="btn btn-primary w-100 py-3" type="submit" disabled={loading}>
-                      {loading ? 'Sending...' : 'Send Message'}
-                    </button>
+                    <button className="btn btn-primary w-100 py-3" type="submit" disabled={loading}>{loading ? 'Sending...' : 'Send Message'}</button>
                   </div>
                   {success && <div className="alert alert-success mt-3">{success}</div>}
                   {error && <div className="alert alert-danger mt-3">{error}</div>}

@@ -46,7 +46,7 @@ const TestimonialsSection: React.FC = () => (
             </div>
             <div className="testimonial-author">
               <div className="author-avatar">
-                <img src={`${import.meta.env.BASE_URL}/assets/avatar_0.jpg`} alt="Taiwo O.A." />
+                <img src={`${import.meta.env.BASE_URL}assets/avatar_0.jpg`} alt="Taiwo O.A." />
               </div>
               <div className="author-info">
                 <h5>Taiwo O.A.</h5>
@@ -69,7 +69,7 @@ const TestimonialsSection: React.FC = () => (
             </div>
             <div className="testimonial-author">
               <div className="author-avatar">
-                <img src={`${import.meta.env.BASE_URL}/assets/avatar_00.jpg`} alt="Osas A.O." />
+                <img src={`${import.meta.env.BASE_URL}assets/avatar_00.jpg`} alt="Osas A.O." />
               </div>
               <div className="author-info">
                 <h5>Osas A.O.</h5>
@@ -92,7 +92,7 @@ const TestimonialsSection: React.FC = () => (
             </div>
             <div className="testimonial-author">
               <div className="author-avatar">
-                <img src={`${import.meta.env.BASE_URL}/assets/avatar_000.jpg`} alt="Sam G." />
+                <img src={`${import.meta.env.BASE_URL}assets/avatar_000.jpg`} alt="Sam G." />
               </div>
               <div className="author-info">
                 <h5>Sam G.</h5>
@@ -115,7 +115,7 @@ const TestimonialsSection: React.FC = () => (
             </div>
             <div className="testimonial-author">
               <div className="author-avatar">
-                <img src={`${import.meta.env.BASE_URL}/assets/avatar_01.jpg`} alt="Iyanu O." />
+                <img src={`${import.meta.env.BASE_URL}assets/avatar_01.jpg`} alt="Iyanu O." />
               </div>
               <div className="author-info">
                 <h5>Iyanu O.</h5>
@@ -138,7 +138,7 @@ const TestimonialsSection: React.FC = () => (
             </div>
             <div className="testimonial-author">
               <div className="author-avatar">
-                <img src={`${import.meta.env.BASE_URL}/assets/avatar_00000.jpg`} alt="Helen J.I." />
+                <img src={`${import.meta.env.BASE_URL}assets/avatar_00000.jpg`} alt="Helen J.I." />
               </div>
               <div className="author-info">
                 <h5>Helen J.I.</h5>

@@ -85,12 +85,12 @@ const teamMembers = [
   },
   {
     name: 'Iyanuoluwa Orimolade',
-    title: 'Data & Career Strategy Facilitator',
+    title: 'Data Analyst & Career Strategy Facilitator',
     img: import.meta.env.BASE_URL + 'assets/iyanuoluwa.jpg',
-    summary: 'Data & Career Strategy Facilitator with experience guiding early-stage professionals and career changers. Focused on interactive, learner-centered coaching.',
+    summary: 'Data Analyst & Career Strategy Facilitator with experience guiding early-stage professionals and career changers. Focused on interactive, learner-centered coaching.',
     full: `Iyanuoluwa Orimolade is a dedicated and empathetic professional with years of experience helping people grow in their careers. She supports early-career professionals and those changing careers by giving them clear guidance and helping them build confidence. Her style is friendly and focused on each person's needs, making it easier for them to reach their goals.
-At IntelliNavix Careers, Iyanuoluwa works one-on-one with clients. She runs coaching sessions that help people set goals, handle challenges, and improve their skills. She is known for being calm and positive, creating a space where clients feel comfortable to learn and grow.
-Iyanuoluwa also designs workshops and creates career plans tailored to each person. She uses proven methods to help clients make good decisions about their careers. She has a Master's degree in Geosciences from the University of Aberdeen and is very good at guiding people through career changes, helping them feel confident and plan for long-term success.`,
+    At IntelliNavix Careers, Iyanuoluwa works one-on-one with clients. She runs coaching sessions that help people set goals, handle challenges, and improve their skills. She is known for being calm and positive, creating a space where clients feel comfortable to learn and grow.
+    Iyanuoluwa also designs workshops and creates career plans tailored to each person. She uses proven methods to help clients make good decisions about their careers. She has a Master's degree in Geosciences from the University of Aberdeen and is very good at guiding people through career changes, helping them feel confident and plan for long-term success.`,
     linkedin: 'https://www.linkedin.com/in/iyanuoluwa-orimolade/',
     twitter: 'https://x.com/Iyanuorim',
     email: 'mailto:iyanu.orimolade@intellinavix.com'

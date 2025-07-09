@@ -60,6 +60,19 @@ const JourneySection: React.FC = () => {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const animationRef = useRef<number | null>(null);
 
+  const [form, setForm] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    careerField: '',
+    goals: '',
+    terms: false,
+    newsletter: false,
+  });
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
   // Restore the step cycling logic to use setInterval every 4000ms (4 seconds)
   useEffect(() => {
     if (!paused) {
@@ -106,41 +119,52 @@ const JourneySection: React.FC = () => {
   const handleDialogMouseEnter = () => setPaused(true);
   const handleDialogMouseLeave = () => setPaused(false);
 
-  // Form logic (same as before)
-  const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    careerField: '',
-    goals: '',
-    terms: false,
-    newsletter: false,
-  });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  // Update handleChange for checkboxes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value, type } = e.target;
-    let checked = false;
-    if (type === 'checkbox' && 'checked' in e.target) {
-      checked = (e.target as HTMLInputElement).checked;
-    }
     setForm((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
     setSuccess('');
-    setTimeout(() => {
-      setLoading(false);
+    setError('');
+    try {
+      const response = await fetch('/submit_journey_section.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          ...form,
+          terms: form.terms ? '1' : '',
+          newsletter: form.newsletter ? '1' : '',
+        }).toString(),
+      });
+      const data = await response.json();
+      if (data.result === 'success') {
+        setSuccess('Thank you! We\'ll be in touch soon.');
+        setForm({
+          fullName: '',
+          email: '',
+          phone: '',
+          careerField: '',
+          goals: '',
+          terms: false,
+          newsletter: false,
+        });
+      } else {
+        setError('Sorry, something went wrong. Please try again later.');
+      }
+    } catch (err) {
       setError('Sorry, something went wrong. Please try again later.');
-    }, 800);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -288,17 +312,16 @@ const JourneySection: React.FC = () => {
                 </div>
               </div>
               <button type="submit" className="submit-btn" disabled={loading} style={{ padding: '0.8rem', fontSize: '1rem', marginTop: 2 }}>
-                <span className="loading-spinner" style={{ display: loading ? 'inline-block' : 'none' }}></span>
-                <span className="btn-text">Begin My Journey</span>
+                <span className="btn-text">{loading ? 'Submitting...' : 'Begin My Journey'}</span>
               </button>
+              {success && (
+                <div className="success-message" id="successMessage" style={{ display: 'block', marginTop: 8 }}>
+                  <i className="fas fa-check-circle"></i> {success}
+                </div>
+              )}
               {error && (
                 <div className="error-message" id="errorMessage" style={{ display: 'block', marginTop: 8 }}>
                   <i className="fas fa-exclamation-triangle"></i> <span id="errorText">{error}</span>
-                </div>
-              )}
-              {success && (
-                <div className="success-message" id="successMessage" style={{ display: 'block', marginTop: 8 }}>
-                  <i className="fas fa-check-circle"></i> Thank you! We'll be in touch soon.
                 </div>
               )}
             </form>

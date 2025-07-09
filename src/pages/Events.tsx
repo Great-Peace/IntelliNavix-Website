@@ -61,42 +61,42 @@ export const upcomingEvents: UpcomingEvent[] = [
 const pastEvents = [
   {
     title: 'From Data to Insight: Build Dashboards in 90 Minutes',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-1.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/event-poster-1.jpg`,
     recording: 'https://www.youtube.com/watch?v=qlcvm779UZ4&t=5588s',
   },
   {
     title: 'Data Analysis Demystified for Aspiring Analysts',
-    image: `${import.meta.env.BASE_URL}/assets/data_demystified.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/data_demystified.jpeg`,
     recording: 'https://www.youtube.com/watch?v=QKNQwXJfpVA',
   },
   {
     title: 'Business Analysis: A Launchpad for Aspiring Analysts',
-    image: `${import.meta.env.BASE_URL}/assets/business_launchpad.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/business_launchpad.jpeg`,
     recording: 'https://www.youtube.com/watch?v=oRPFF5eQ7lA',
   },
   {
     title: 'Data Analytics Masterclass',
-    image: `${import.meta.env.BASE_URL}/assets/data_masterclass.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/data_masterclass.jpeg`,
     recording: 'https://www.youtube.com/watch?v=YynckLbkXLQ',
   },
   {
     title: 'Mastering Google Analytics for Performance Analysts',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-5.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/event-poster-5.jpeg`,
     recording: 'https://www.youtube.com/watch?v=-jvEJAuCKhg',
   },
   {
     title: 'Building a Web App with Python, Streamlit, and SQL',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-6.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/event-poster-6.jpeg`,
     recording: 'https://www.youtube.com/watch?v=f8-bw_MfHZI',
   },
   {
     title: 'IT Project Management: A Journey for New Entrants',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-7.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/event-poster-7.jpeg`,
     recording: 'https://www.youtube.com/watch?v=u3qya6zWxXw',
   },
   {
     title: 'Crafting Your IT Career: Recruitment Insights for New Entrants',
-    image: `${import.meta.env.BASE_URL}/assets/event-poster-8.jpeg`,
+    image: `${import.meta.env.BASE_URL}assets/event-poster-8.jpeg`,
     recording: 'https://www.youtube.com/watch?v=_fcvtqHjSiQ&t=7s',
   },
 ];
@@ -105,25 +105,25 @@ const testimonials = [
   {
     name: 'Sarah O.',
     role: 'Data Analyst, London',
-    photo: `${import.meta.env.BASE_URL}/assets/avatar_2.jpg`,
+    photo: `${import.meta.env.BASE_URL}assets/avatar_2.jpg`,
     quote: 'The SQL Workshop was a game-changer for my career. The hands-on approach and expert guidance made all the difference!'
   },
   {
     name: 'James T.',
     role: 'Business Consultant, Manchester',
-    photo: `${import.meta.env.BASE_URL}/assets/avatar_1.jpg`,
+    photo: `${import.meta.env.BASE_URL}assets/avatar_1.jpg`,
     quote: 'The Business Analysis Masterclass gave me practical tools I use every day. Highly recommended!'
   },
   {
     name: 'Aisha B.',
     role: 'Project Manager, Birmingham',
-    photo: `${import.meta.env.BASE_URL}/assets/avatar_3.jpg`,
+    photo: `${import.meta.env.BASE_URL}assets/avatar_3.jpg`,
     quote: 'The Project Management Bootcamp was intense and rewarding. I left with new skills and a great network.'
   },
   {
     name: 'Samuel K.',
     role: 'Graduate, Glasgow',
-    photo: `${import.meta.env.BASE_URL}/assets/avatar_5.jpg`,
+    photo: `${import.meta.env.BASE_URL}assets/avatar_5.jpg`,
     quote: 'IntelliNavix events are always inspiring and practical. I keep coming back for more!'
   },
 ];
@@ -151,65 +151,30 @@ const eventHighlights = [
   },
 ];
 
-// RegistrationModal props type
+// Add this type at the top of the file (or above Events component)
+type RegistrationFormState = {
+  name: string;
+  email: string;
+  message: string;
+  selectedEvent: string;
+};
+
+// Update RegistrationModalProps to include the lifted state and handlers
 type RegistrationModalProps = {
   show: boolean;
   onClose: () => void;
   event: Partial<UpcomingEvent>;
-  onRegistrationSuccess?: (eventId: string) => void;
+  form: RegistrationFormState;
+  success: string;
+  error: string;
+  handleFormChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  handleFormSubmit: (e: React.FormEvent) => void;
 };
 
-const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, event, onRegistrationSuccess }) => {
-  const [form, setForm] = useState({ name: '', email: '', message: '', selectedEvent: event.title || '' });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState('');
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    setForm(f => ({ ...f, selectedEvent: event.title || '' }));
-  }, [event.title]);
-
+const RegistrationModal: React.FC<RegistrationModalProps> = ({
+  show, onClose, event, form, success, error, handleFormChange, handleFormSubmit
+}) => {
   if (!show) return null;
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess('');
-    setError('');
-    try {
-      // Add registration timestamp
-      const formDataWithTimestamp = {
-        ...form,
-        registrationDate: new Date().toISOString()
-      };
-      
-      // TODO: Replace with your Google Apps Script URL
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzJwuikPjgXeVSTz_fayETmY89_Qntb08_pNpW3csSJNIbPd6Sp0rT-qysGGIuY05FV/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formDataWithTimestamp),
-      });
-      const data = await response.json();
-      if (data.result === 'success') {
-        setSuccess('Registration successful! Check your email for confirmation.');
-        setForm({ name: '', email: '', message: '', selectedEvent: event.title || '' });
-        // Call the callback to mark this event as registered
-        if (onRegistrationSuccess && event.id) {
-          onRegistrationSuccess(event.id);
-        }
-      } else {
-        setError('Sorry, something went wrong. Please try again later.');
-      }
-    } catch (err) {
-      setError('Sorry, something went wrong. Please try again later.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="modal fade show d-block" tabIndex={-1} style={{ background: 'rgba(0,0,0,0.5)' }}>
@@ -220,10 +185,10 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, ev
             <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
           <div className="modal-body">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleFormSubmit}>
               <div className="mb-3">
                 <label className="form-label">Event</label>
-                <select className="form-select" name="selectedEvent" value={form.selectedEvent} onChange={handleChange} required>
+                <select className="form-select" name="selectedEvent" value={form.selectedEvent} onChange={handleFormChange} required>
                   <option value="" disabled>Select an event</option>
                   {upcomingEvents.map((ev) => (
                     <option key={ev.id} value={ev.title}>{ev.title}</option>
@@ -232,19 +197,17 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ show, onClose, ev
               </div>
               <div className="mb-3">
                 <label className="form-label">Name</label>
-                <input type="text" className="form-control" name="name" value={form.name} onChange={handleChange} required />
+                <input type="text" className="form-control" name="name" value={form.name} onChange={handleFormChange} required />
               </div>
               <div className="mb-3">
                 <label className="form-label">Email</label>
-                <input type="email" className="form-control" name="email" value={form.email} onChange={handleChange} required />
+                <input type="email" className="form-control" name="email" value={form.email} onChange={handleFormChange} required />
               </div>
               <div className="mb-3">
                 <label className="form-label">Message</label>
-                <textarea className="form-control" name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Your question or interest (optional)" />
+                <textarea className="form-control" name="message" value={form.message} onChange={handleFormChange} rows={3} placeholder="Your question or interest (optional)" />
               </div>
-              <button type="submit" className="btn btn-primary w-100" disabled={loading}>
-                {loading ? 'Registering...' : 'Register'}
-              </button>
+              <button type="submit" className="btn btn-primary w-100">Register</button>
               {success && <div className="alert alert-success mt-3">{success}</div>}
               {error && <div className="alert alert-danger mt-3">{error}</div>}
             </form>
@@ -260,6 +223,39 @@ const NAVBAR_OFFSET = 90; // px, matches Home page and navbar height
 const Events: React.FC = () => {
   const [modalEvent, setModalEvent] = useState<UpcomingEvent | null>(null);
   const [registeredEvents, setRegisteredEvents] = useState<Set<string>>(new Set());
+  // Move these above RegistrationModal so they are in scope for both components
+  const [form, setForm] = useState({ name: '', email: '', message: '', selectedEvent: '' });
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+
+  // Handle form field changes
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  // Handle AJAX form submission
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSuccess('');
+    setError('');
+    try {
+      const response = await fetch('/submit_event.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(form).toString(),
+      });
+      const data = await response.json();
+      if (data.result === 'success') {
+        setSuccess('Registration successful! Check your email for confirmation.');
+        setRegisteredEvents(prev => new Set(prev).add(form.selectedEvent));
+        setForm({ name: '', email: '', message: '', selectedEvent: '' });
+      } else {
+        setError('Sorry, something went wrong. Please try again later.');
+      }
+    } catch (err) {
+      setError('Sorry, something went wrong. Please try again later.');
+    }
+  };
 
   // Smooth scroll with offset for anchor links
   useEffect(() => {
@@ -380,7 +376,16 @@ const Events: React.FC = () => {
         </section>
 
         {/* Registration Modal */}
-        <RegistrationModal show={!!modalEvent} onClose={() => setModalEvent(null)} event={modalEvent || {}} onRegistrationSuccess={(eventId) => setRegisteredEvents(prev => new Set(prev).add(eventId))} />
+        <RegistrationModal
+          show={!!modalEvent}
+          onClose={() => setModalEvent(null)}
+          event={modalEvent || {}}
+          form={form}
+          success={success}
+          error={error}
+          handleFormChange={handleFormChange}
+          handleFormSubmit={handleFormSubmit}
+        />
 
         {/* Event Highlights */}
         <section className="event-highlights-section py-5 bg-white">

@@ -95,14 +95,22 @@ const courseOptions = [
   'Agile Scrum Methodologies',
 ];
 
+// NewsletterForm with AJAX
 const NewsletterForm = () => {
   const [form, setForm] = useState({ name: '', email: '' });
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // Universal handleChange for all form elements
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -111,10 +119,10 @@ const NewsletterForm = () => {
     setSuccess('');
     setError('');
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwkB57dAg-kCbenC1PI5Dlmfv_yVxhQAfjpC_9y7tZ5GP-fzzdxXyOi_QdJoS1e8uoGww/exec', {
+      const response = await fetch('/submit_newsletter.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(form).toString(),
       });
       const data = await response.json();
       if (data.result === 'success') {
@@ -133,31 +141,13 @@ const NewsletterForm = () => {
   return (
     <form className="row g-3 justify-content-center" onSubmit={handleSubmit}>
       <div className="col-md-5">
-        <input
-          type="text"
-          className="form-control form-control-lg"
-          name="name"
-          placeholder="Your Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+        <input type="text" className="form-control form-control-lg" name="name" placeholder="Your Name" value={form.name} onChange={handleChange} required />
       </div>
       <div className="col-md-5">
-        <input
-          type="email"
-          className="form-control form-control-lg"
-          name="email"
-          placeholder="Your Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
+        <input type="email" className="form-control form-control-lg" name="email" placeholder="Your Email" value={form.email} onChange={handleChange} required />
       </div>
       <div className="col-md-2 d-grid">
-        <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>
-          {loading ? 'Submitting...' : 'Subscribe'}
-        </button>
+        <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>{loading ? 'Submitting...' : 'Subscribe'}</button>
       </div>
       {success && <div className="col-12"><div className="alert alert-success mt-3">{success}</div></div>}
       {error && <div className="col-12"><div className="alert alert-danger mt-3">{error}</div></div>}
@@ -171,6 +161,7 @@ interface StartJourneyModalProps {
   selectedCourse: string;
 }
 
+// StartJourneyModal with AJAX
 const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, selectedCourse }) => {
   const [form, setForm] = useState({
     name: '',
@@ -179,16 +170,23 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
     course: selectedCourse || courseOptions[0],
     message: '',
   });
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setForm((prev) => ({ ...prev, course: selectedCourse || courseOptions[0] }));
   }, [selectedCourse, show]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // Universal handleChange for all form elements
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -197,10 +195,10 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
     setSuccess('');
     setError('');
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyw83Finy2YsgOsuI6OB0bgqyEyOAGfGthG0k7912IaMf8N61iMIphO1VAv-PzSkb5ErQ/exec', {
+      const response = await fetch('/submit_journey.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(form).toString(),
       });
       const data = await response.json();
       if (data.result === 'success') {
@@ -230,13 +228,7 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
             <form className="row g-3" onSubmit={handleSubmit}>
               <div className="col-12">
                 <label className="form-label">Course</label>
-                <select
-                  className="form-select"
-                  name="course"
-                  value={form.course}
-                  onChange={handleChange}
-                  required
-                >
+                <select className="form-select" name="course" value={form.course} onChange={handleChange} required>
                   {courseOptions.map((opt) => (
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
@@ -244,50 +236,19 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
               </div>
               <div className="col-12">
                 <label className="form-label">Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  placeholder="Your Name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="text" className="form-control" name="name" placeholder="Your Name" value={form.name} onChange={handleChange} required />
               </div>
               <div className="col-12">
                 <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Your Email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="email" className="form-control" name="email" placeholder="Your Email" value={form.email} onChange={handleChange} required />
               </div>
               <div className="col-12">
                 <label className="form-label">Phone</label>
-                <input
-                  type="tel"
-                  className="form-control"
-                  name="phone"
-                  placeholder="Your Phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="tel" className="form-control" name="phone" placeholder="Your Phone" value={form.phone} onChange={handleChange} required />
               </div>
               <div className="col-12">
                 <label className="form-label">Message</label>
-                <textarea
-                  className="form-control"
-                  name="message"
-                  placeholder="Your Message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={3}
-                />
+                <textarea className="form-control" name="message" placeholder="Your Message" value={form.message} onChange={handleChange} rows={3} />
               </div>
               <div className="col-12">
                 <div className="alert alert-info text-center" style={{ fontSize: '1.2rem', fontWeight: 600 }}>
@@ -295,9 +256,7 @@ const StartJourneyModal: React.FC<StartJourneyModalProps> = ({ show, onClose, se
                 </div>
               </div>
               <div className="col-12 d-grid">
-                <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>
-                  {loading ? 'Submitting...' : 'Start Your Journey'}
-                </button>
+                <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>{loading ? 'Submitting...' : 'Start Your Journey'}</button>
               </div>
               {success && <div className="col-12"><div className="alert alert-success mt-3">{success}</div></div>}
               {error && <div className="col-12"><div className="alert alert-danger mt-3">{error}</div></div>}
@@ -325,6 +284,8 @@ const Home = () => {
   const navigate = useNavigate();
   const sliderRef = useRef<HTMLDivElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  // Add a ref for the journey section
+  const journeySectionRef = useRef<HTMLDivElement>(null);
 
   // Auto-advance slider
   useEffect(() => {
@@ -891,7 +852,7 @@ const Home = () => {
                         to={
                           course.title === 'Data Analytics & Visualization' ? '/courses/data-analytics'
                           : course.title === 'Business Analysis' ? '/courses/business-analysis'
-                          : course.title === 'Project Management (PMO)' ? '/courses/project-management'
+                          : course.title === 'Project Management' ? '/courses/project-management'
                           : course.title === 'Agile Scrum Methodologies' ? '/courses/agile-scrum'
                           : '/courses'
                         }
@@ -923,11 +884,21 @@ const Home = () => {
               <h3>Ready to Transform Your Career?</h3>
               <p>Join our community of successful professionals who've advanced their careers through our programs</p>
               <div className="cta-actions">
-                <button className="btn btn-primary btn-lg">
+                <button
+                  className="btn btn-primary btn-lg"
+                  onClick={() => {
+                    if (journeySectionRef.current) {
+                      journeySectionRef.current.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
                   <i className="fas fa-rocket"></i>
                   Start Your Journey
                 </button>
-                <button className="btn btn-outline btn-lg">
+                <button
+                  className="btn btn-outline btn-lg"
+                  onClick={() => window.open('https://lnkd.in/e38rjRFG', '_blank')}
+                >
                   <i className="fas fa-calendar"></i>
                   Book Free Consultation
                 </button>
@@ -937,10 +908,14 @@ const Home = () => {
           </div>
 
           <ToolsSection />
-          <JourneySection />
+          {/* Attach the ref to the journey section */}
+          <div ref={journeySectionRef} id="your-learning-journey">
+            <JourneySection />
+          </div>
           <TestimonialsSection />
         </div>
       </section>
+      
     </>
   );
 };
